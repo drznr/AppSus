@@ -14,7 +14,6 @@ const routes = [
         {path:'', component: emailListPage},
         {path:'compose', component: emailComposePage},
         {path:':id', component: emailDetailsPage},
-
     ]}
 ];
 

@@ -5,10 +5,12 @@ export default {
     <section v-if="email" class="email-preview-card-wrap">
         <router-link :to="'/emails/' + email.id">
             <div class="email-preview-card">
-            <p>✩</p>
-            <h2>{{email.from}}</h2>
-            <h3>{{email.subject}}</h3>
-            <p>{{email.body}}</p>
+                <span class="email-preview-card-info">
+                    <span>✩</span>
+                    <p>{{email.from}}</p>
+                    <p>{{email.subject}}</p>
+                </span>
+                <p class="email-preaview-body">{{email.body}}</p>
             </div>
         </router-link>   
     </section>
@@ -19,12 +21,6 @@ export default {
             currEmail: null,
         }
     },
-    // methods:{
-    //     select(emailId){
-    //         // console.log(emailId);
-    //         this.$emit('selected', emailId)
-    //     }
-    // },
     created(){
         this.currEmail = this.email
     }

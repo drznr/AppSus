@@ -5,6 +5,11 @@ export default {
     template: `
     <section v-if="this.email" class="email-details-container">
         <h2>{{email.subject}}</h2>
+        <div class="emails-sender-info-wrap">
+            <p>{{email.from}}</p>
+            <span>✩</span>
+        </div>
+        <p>{{email.body}}</p>
     </section>
     `,
     data(){

@@ -1,0 +1,11 @@
+.email-container{
+    min-height: 73vh;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    grid-template-columns: 2fr 7fr;
+}
+
+.email-router-view{
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}

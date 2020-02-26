@@ -1,0 +1,23 @@
+.emial-compose-main{
+    padding: 30px;
+    padding: 30px 30px 30px 75px;
+    background-color: #F9F9F9;
+    height: 400px;
+}
+
+
+.emial-compose-main input{
+    width: 100%;
+    border-color: transparent;
+}
+
+.emial-compose-main textarea{
+    width: 100%;
+    border-color: transparent;
+    height: 250px;
+    padding-bottom: 20px;
+}
+
+.email-compose-hr{
+    width: 95%;
+}
