@@ -7,16 +7,125 @@
     background-color: #303841;
     font-family: 'incostabold' ,monospace;
     transition: padding .3s linear;
+    margin-bottom: 40px;
+}
+.main-header * {
+    user-select: none;
 }
 .main-header:hover {
     padding: 30px 40px;
+    margin-bottom: 0;
 }
 .main-header [alt="logo"] {
     width: 50px;
 }
 .main-nav {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    width: 50%;
+    height: 100%;
+    width: 90%;
+    position: absolute;
+    top: 105px;
+    right: 0;
+    background-color: #303841;
+    transform: scaleX(0);
+    transform-origin: right;
+    opacity: 0;
+    transition: top .3s linear, transform .8s linear, opacity .8s linear;
+}
+.main-header:hover .main-nav {
+    top: 145px;
+}
+.main-nav li:not(:last-child) {
+    margin-bottom: 30px;
+}
+.main-nav a {
+    position: relative;
+    transition: color .3s linear;
+}
+.main-nav a:hover {
+    color: #AAC0D3;
+}
+.main-nav .router-link-active {
+    color: #AAC0D3;
+}
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -15px;
+    display: inline-block;
+    background-color: #AAC0D3;
+    width: 10px;
+    height: 100%;
+    transform: scaleX(0);
+    transition: transform .3s linear, top .3s linear;
+}
+.main-nav a:hover::after {
+    transform: scaleX(1);
+}
+.main-nav .router-link-active::after {
+    transform: scaleX(1);
+}
+.main-hamburger {
+    transform: rotateZ(90deg);
+    display: inline-block;
+    cursor: pointer;
+    font-size: 1.25em;
+}
+.main-hamburger span::before, .main-hamburger span::after {
+    content: '|';
+    display: inline-block;
+    transition: transform .3s linear;
+}
+.main-header [type="checkbox"] {
+    display: none;
+}
+.main-header [type="checkbox"]:checked + label > span {
+    color: #303841;
+}
+.main-header [type="checkbox"]:checked + label > span::after, .main-header [type="checkbox"]:checked + label > span::before {
+    color: #F3F3F3;
+}
+.main-header [type="checkbox"]:checked + label > span::before {
+    transform: translateX(8px) rotateZ(315deg);
+}
+.main-header [type="checkbox"]:checked + label > span::after {
+    transform: translateX(-10px) rotateZ(-315deg);
+}
+.main-header [type="checkbox"]:checked ~ .main-nav {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+
+
+@media only screen and (min-width: 900px) {
+    .main-nav {
+        flex-direction: row;
+        justify-content: space-between;
+        height: unset;
+        width: 50%;
+        position: initial;
+        background-color: transparent;
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    .main-hamburger {
+        display: none;
+    }
+    .main-nav li:not(:last-child) {
+        margin-bottom: 0;
+    }
+    .main-nav a::after {
+        width: 100%;
+        height: 5px;
+        top: 55px;
+        left: 0;
+    }
+    .main-header:hover .main-nav a::after {
+        top: 75px;
+    }
 }
