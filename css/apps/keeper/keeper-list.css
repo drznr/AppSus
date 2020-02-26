@@ -1,0 +1,11 @@
+.keeper-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 30px;
+    padding: 0 30px;
+}
+.note-card {
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .75);
+    padding: 30px 10px;
+}

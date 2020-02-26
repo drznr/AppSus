@@ -7,7 +7,9 @@ new Vue({
     template: `
         <section>
             <main-header></main-header>
-            <router-view></router-view>
+            <main class="main-content">
+                <router-view></router-view>
+            </main>
             <main-footer></main-footer>
         </section>
     `,
