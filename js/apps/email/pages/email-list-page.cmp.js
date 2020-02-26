@@ -1,11 +1,11 @@
 
 
-import emailPreview from '../cmps/email-preview.cmp'                  
+import emailPreview from '../cmps/email-preview.cmp.js'                  
 
 export default {
     template: `
-    <section class="book-list-container">
-            <book-prev v-for="book in books" :book="book" v-bind:key="book.id" @click.native="select(book.id)" ></book-prev>
+    <section class="emails-list-container">
+            <email-preview v-for="email in emails" :email="emails" v-bind:key="book.id" @click.native="select(book.id)" ></email-preview>
     </section>
     `, 
     props: ['emails'],
@@ -15,7 +15,7 @@ export default {
     //     }
     // },
     components: {
-        'email-prev': emailPreview
+        'email-preview': emailPreview
     }
 
 };
