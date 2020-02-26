@@ -1,0 +1,22 @@
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    color: #F3F3F3;
+    background-color: #303841;
+    font-family: 'incostabold' ,monospace;
+    transition: padding .3s linear;
+}
+.main-header:hover {
+    padding: 30px 40px;
+}
+.main-header [alt="logo"] {
+    width: 50px;
+}
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
