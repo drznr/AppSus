@@ -1,21 +1,28 @@
-
-
+import {emailService} from '../service/email.service.js' 
+import emailPreview from '../cmps/email-preview.cmp.js'
 
 export default {
     template: `
     <section class="emails-list-container">
-            <email-preview v-for="email in emails" :email="emails" v-bind:key="book.id" @click.native="select(book.id)" ></email-preview>
+        <h1>list</h1>
+            <email-preview v-for="email in emails" :email="email" 
+                v-bind:key="email.id">
+            </email-preview>
     </section>
-    `, 
-    props: ['emails'],
-    // methods:{
-    //     select(bookId){
-    //         this.$emit('selected', bookId)
-    //     }
-    // },
+    `,
+    data(){
+        return {
+            emails: [],
+        }
+    },
+    created(){
+        emailService.query()
+        .then(emails => this.emails = emails)
+        console.log(this.emails);
+    }, 
     components: {
-        
-    }
+        'email-preview': emailPreview,
+    },
 
 };
 
