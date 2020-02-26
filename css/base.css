@@ -20,4 +20,10 @@ body {
     font-family: 'incostaregular' ,monospace;
     background-color: #F3F3F3;
 }
-
+.main-header:hover + .main-content {
+    padding-top: 0px;
+}
+.main-content {
+    padding-top: 50px;
+    transition: padding .3s linear;
+}

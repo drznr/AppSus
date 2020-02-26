@@ -9,11 +9,11 @@ import emailComposePage from './apps/email/pages/email-compose-page.cmp.js';
 const routes = [
     {path: '/', component: homePageCmp},
     {path: '/keeper', component: keeperAppCmp},
-    {path: '/eamils', component: emailAppCmp,
+    {path: '/emails', component: emailAppCmp,
     children:[
-        {path:'/emails/details/:id', component: emailDetailsPage},
-        {path:'/emails/inbox', component: emailListPage},
+        {path:'/', component: emailListPage},
         {path:'/emails/compose', component: emailComposePage},
+        {path:':id', component: emailDetailsPage},
 
     ]}
 ];

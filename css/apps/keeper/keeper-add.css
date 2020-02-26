@@ -1,0 +1,13 @@
+.keeper-add {
+    text-align: center;
+    padding: 30px 0;
+    margin-bottom: 50px;
+    border-bottom: 1px solid darkgray;
+}
+.keeper-add [type="text"] {
+    min-width: 70%;
+    padding: 1rem;
+    padding-right: 10rem;
+    border-color: transparent;
+    border-radius: 3px;
+}
