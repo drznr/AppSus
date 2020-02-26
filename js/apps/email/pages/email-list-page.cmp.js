@@ -1,6 +1,5 @@
 
 
-import emailPreview from '../cmps/email-preview.cmp'                  
 
 export default {
     template: `
@@ -15,7 +14,7 @@ export default {
     //     }
     // },
     components: {
-        'email-prev': emailPreview
+        
     }
 
 };
