@@ -8,7 +8,8 @@ var notesDB = [
         type: 'NoteText',
         isPinned: true,
         info: {
-            txt: 'Fullstack Me Baby!'
+            txt: 'Fullstack Me Baby!',
+            title: ''
         },
         styles: {
             backgroundColor: '#ffffff'
@@ -19,7 +20,7 @@ var notesDB = [
         type: 'NoteImg',
         isPinned: false,
         info: {
-            url: 'http://some-img/me',
+            url: 'https://i.redd.it/qczy9rxos8321.jpg',
             title: 'Me playing Mi'
         },
         styles: {
@@ -46,7 +47,7 @@ var notesDB = [
         type: 'NoteVideo',
         isPinned: false,
         info: {
-            url: 'http://some-vid/me',
+            url: 'cadvn16N188',
             title: 'Me playing Video'
         },
         styles: {
@@ -58,7 +59,7 @@ var notesDB = [
         type: 'NoteAudio',
         isPinned: false,
         info: {
-            url: 'http://some-audio/mp3',
+            url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
             title: 'audio'
         },
         styles: {
@@ -68,7 +69,8 @@ var notesDB = [
 ];
 
 export const keeperService = {
-    getNotes
+    getNotes,
+    addNewNote
 }
 
 function getNotes() {
@@ -81,5 +83,7 @@ function getNotes() {
     return Promise.resolve(notes);
 }
 
-
+function addNewNote(noteData) {
+    debugger
+}
 

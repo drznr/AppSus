@@ -2,7 +2,8 @@ export const utilService = {
     getRandomInt,
     makeLorem,
     makeId,
-    trunc
+    trunc,
+    getYoutubeVidId
 }
 
 function getRandomInt(min, max) {
@@ -58,4 +59,13 @@ function _createWord(length) {
     }
 
     return word;
+}
+
+function getYoutubeVidId(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+
+    return (match && match[2].length === 11)
+      ? match[2]
+      : null;
 }

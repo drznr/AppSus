@@ -1,8 +1,8 @@
-import { keeperService } from '../services/keeper-service.js';
 
 var NoteText = {
     template: `
        <div class="note-card" :style="{backgroundColor: styles.backgroundColor}">
+        <h6>{{ info.title }}</h6>
         <p>{{ info.txt }}</p>
         <div>
         
@@ -25,7 +25,7 @@ var NoteImg = {
 var NoteTodos = {
     template: `
     <div class="note-card" :style="{backgroundColor: styles.backgroundColor}">
-        <h5>{{ info.title }}</h5>
+        <h6>{{ info.title }}</h6>
         <ul>
             <li v-for="todo in info.todos"><input type="checkbox" :checked="todo.isDone" />{{ todo.txt }}</li>
         </ul>
@@ -39,10 +39,8 @@ var NoteTodos = {
 var NoteVideo = {
     template: `
     <div class="note-card" :style="{backgroundColor: styles.backgroundColor}">
-    <video controls>
-        <source :src="info.url" type="video/mp4" :title="info.title">
-        Your browser does not support HTML5 video.
-    </video>
+    <h5>{{ info.title }}</h5>
+    <iframe :src="'https://www.youtube.com/embed/' + info.url"></iframe>
     <div>
 
     </div>
@@ -73,19 +71,7 @@ export default {
             </div>
         </section>
     `,
-    data() {
-        return {
-            notes: null
-        }
-    },
-    created() {
-            keeperService.getNotes().then(notes=> {
-                this.notes = JSON.parse(JSON.stringify(notes));
-            })
-            .catch(() => {
-              debugger
-            });
-    },
+    props: ['notes'],
     components: {
         NoteText,
         NoteImg,
