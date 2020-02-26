@@ -4,10 +4,42 @@
     margin-bottom: 50px;
     border-bottom: 1px solid darkgray;
 }
-.keeper-add [type="text"] {
+.keeper-add .add-input {
+    display: inline-block;
     min-width: 70%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 3px;
+    position: relative;
+}
+.keeper-add [type="text"] {
+    border-color: transparent;
+    width: 100%;
+    height: 100%;
     padding: 1rem;
     padding-right: 10rem;
-    border-color: transparent;
-    border-radius: 3px;
+}
+.keeper-add [placeholder="Title"] {
+    border-top: 1px solid #AAC0D1;
+}
+.keeper-add .add-input > span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 15px 0;
+}
+.keeper-add .add-note-icon {
+    display: inline-block;
+    height: 20px;
+    cursor: pointer;
+}
+.keeper-add label {
+   margin-right: 5px;
+}
+.add-input [type="radio"] {
+    display: none;
+}
+.add-input [type="radio"]:checked + label {
+    outline: 1px solid #AAC0D1;
+    outline-offset: 3px;
 }
