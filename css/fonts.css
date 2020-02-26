@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'cutive';
+    src: url("../fonts/Cutive_Mono/CutiveMono-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'incostaregular';
+    src: url("../fonts/Inconsolata/Inconsolata-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'incostabold';
+    src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'major';
+    src: url("../fonts/Major_Mono_Display/MajorMonoDisplay-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url("../fonts/Roboto_Mono/RobotoMono-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotobold';
+    src: url("../fonts/Roboto_Mono/RobotoMono-Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
