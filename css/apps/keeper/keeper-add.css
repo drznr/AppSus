@@ -18,6 +18,35 @@
     padding: 1rem;
     padding-right: 10rem;
 }
+.keeper-add [type="text"]::placeholder {
+    color: inherit;
+    font-size: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+}
+.keeper-add [type="text"] + label {
+    position: absolute;
+    top: 2px;
+    left: 10px;
+    color: #AAC0D1;
+    opacity: 1;
+    transition: all .2s linear;
+}
+.keeper-add #titleInput + label {
+    top: calc(50% + 2px);
+}
+.keeper-add #titleInput:placeholder-shown + label {
+    top: 60%;
+}
+.keeper-add [type="text"]:placeholder-shown + label {
+    top: 18px;
+    left: 18px;
+    opacity: 0;
+}
+.keeper-add [type="text"]:focus {
+    border: 2px solid #AAC0D1;
+}
 .keeper-add [placeholder="Title"] {
     border-top: 1px solid #AAC0D1;
 }
@@ -41,4 +70,7 @@
 .add-input [type="radio"]:checked + label {
     outline: 1px solid #AAC0D1;
     outline-offset: 3px;
+}
+.placeholder {
+    height: 52px;
 }

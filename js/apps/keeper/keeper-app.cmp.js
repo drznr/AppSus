@@ -3,6 +3,7 @@ import { utilService } from '../../service/utils.js';
 import keeprAddCmp from './cmps/keepr-add.cmp.js';
 import keeperListCmp from './cmps/keeper-list.cmp.js';
 import keeperFilterCmp from './cmps/keeper-filter.cmp.js';
+import { eventBus } from '../../service/event-bus.service.js';
 
 export default {
     template: `
@@ -14,6 +15,10 @@ export default {
             @removed="removeNote" 
             @colored="editNote"
             @pinned="editNote"
+            @todo-toggle="toggleTodos"
+            @txt-change="changeTxt"
+            @todo-added="addTodo"
+            @todo-removed="removeTodo"
             ></keeper-list>
         </section>
     `,
@@ -46,7 +51,7 @@ export default {
                 this.notes = JSON.parse(JSON.stringify(notes));
             })
             .catch(() => {
-              debugger  //// call user-msg through event bus
+                eventBus.$emit('show-msg', {type: 'error', txt: 'Something went wrong...'});
             });
     },
     methods: {
@@ -54,31 +59,71 @@ export default {
             keeperService.addNewNote(noteData)
             .then(notes => {
                 this.notes = JSON.parse(JSON.stringify(notes));
+                eventBus.$emit('show-msg', {type: 'success', txt: 'Note was added successfully!'});
             })
             .catch(() => {
-                debugger //// call user-msg through event bus
+                eventBus.$emit('show-msg', {type: 'error', txt: 'Something went wrong...'});
             });
         },
         removeNote(noteId) {
             keeperService.removeNote(noteId)
             .then(notes => {
                 this.notes = JSON.parse(JSON.stringify(notes));
+                eventBus.$emit('show-msg', {type: 'success', txt: 'Note was removed successfully!'});
             })
             .catch(() => {
-                debugger //// call user-msg through event bus
+                eventBus.$emit('show-msg', {type: 'error', txt: 'Something went wrong...'});
             });
         },
         editNote(noteData) {
             keeperService.editNote(noteData)
             .then(notes => {
                 this.notes = JSON.parse(JSON.stringify(notes));
+                eventBus.$emit('show-msg', {type: 'success', txt: 'Note was editted successfully!'});
             })
             .catch(() => {
-                debugger //// call user-msg through event bus
+                eventBus.$emit('show-msg', {type: 'error', txt: 'Something went wrong...'});
             });
         },
         filter(filterBy) {
             this.filterBy = filterBy;
+        },
+        toggleTodos(todoData) {
+            keeperService.toggleTodo(todoData)
+            .then(notes=> {
+                this.notes = JSON.parse(JSON.stringify(notes));
+            })
+            .catch(() => {
+                eventBus.$emit('show-msg', {type: 'error', txt: 'Something went wrong...'});
+            });
+        },
+        changeTxt(noteData) {
+            keeperService.replaceTxt(noteData)
+            .then(notes=> {
+                this.notes = JSON.parse(JSON.stringify(notes));
+                eventBus.$emit('show-msg', {type: 'success', txt: 'Note was editted successfully!'});
+            })
+            .catch(() => {
+                eventBus.$emit('show-msg', {type: 'error', txt: 'Something went wrong...'});
+            })
+        },
+        addTodo(noteData) {
+            keeperService.addTodo(noteData)
+            .then(notes => {
+                this.notes = JSON.parse(JSON.stringify(notes));
+            })
+            .catch(() => {
+                eventBus.$emit('show-msg', {type: 'error', txt: 'Something went wrong...'});
+            })
+        },
+        removeTodo(noteData) {
+            keeperService.removeTodo(noteData)
+            .then(notes => {
+                this.notes = JSON.parse(JSON.stringify(notes));
+            })
+            .catch(() => {
+                eventBus.$emit('show-msg', {type: 'error', txt: 'Something went wrong...'});
+            })
         }
     },
     components: {

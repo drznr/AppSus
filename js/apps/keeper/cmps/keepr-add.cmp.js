@@ -3,12 +3,15 @@ export default {
     template: `
     <section class="keeper-add">
     <div class="add-input">
-        <input type="text" 
+        <input type="text"
+        id="addMainInput" 
         :placeholder="compPlaceholder" 
         v-model="noteInfo.txt" 
         @keyup.enter="addNote" 
         class="info-inp" />
-        <input type="text" placeholder="Title" v-model="noteInfo.noteTitle" @keyup.enter="addNote" v-show="noteInfo.txt" />
+        <label for="addMainInput">{{ compPlaceholder }}</label>
+        <input type="text" placeholder="Title" v-model="noteInfo.noteTitle" id="titleInput" @keyup.enter="addNote" v-show="noteInfo.txt" />
+        <label for="titleInput">Title</label>
         <span>
             <input type="radio" name="note-type" id="txtNote" value="NoteText" v-model="noteInfo.noteType" />
             <label for="txtNote">
@@ -32,6 +35,7 @@ export default {
             </label>
         </span>
     </div>
+    <div class="placeholder" v-show="!noteInfo.txt"></div>
     </section>
     `,
     data() {

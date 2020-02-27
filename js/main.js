@@ -1,11 +1,13 @@
 import { router } from './router.js';
 import mainHeaderCmp from './cmps/main-header.cmp.js';
 import mainFooterCmp from './cmps/main-footer.cmp.js';
+import userMsgCmp from './cmps/user-msg.cmp.js';
 
 
 new Vue({
     template: `
         <section>
+            <user-msg></user-msg>
             <main-header></main-header>
             <main class="main-content">
                 <router-view></router-view>
@@ -17,6 +19,7 @@ new Vue({
     router,
     components: {
         'main-header': mainHeaderCmp,
-        'main-footer': mainFooterCmp
+        'main-footer': mainFooterCmp,
+        'user-msg': userMsgCmp
     }
 });
