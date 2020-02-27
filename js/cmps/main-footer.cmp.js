@@ -1,5 +1,7 @@
 export default {
     template: `
-      <h3>FOOOOOOOOTER</h3>
+      <footer class="main-footer">
+        
+      </footer>
     `
 }
