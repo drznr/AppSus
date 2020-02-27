@@ -32,6 +32,7 @@
     transform: scaleX(0);
     transform-origin: right;
     opacity: 0;
+    z-index: 9;
     transition: top .3s linear, transform .8s linear, opacity .8s linear;
 }
 .main-header:hover .main-nav {

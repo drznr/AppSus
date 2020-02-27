@@ -7,8 +7,44 @@
 }
 .note-card {
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .75);
-    padding: 30px 10px;
+    padding: 40px 10px;
+    padding-bottom: 10px;
+    position: relative;
 }
 .note-card>img, .note-card>iframe, .note-card>audio {
     width: 100%;
+}
+.note-card .controls {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+.note-card .controls img {
+    width: 25px;
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+    transition: opacity .3s linear, transform .3s linear;
+}
+.note-card .controls [type="color"] {
+    display: none;
+}
+.note-card .controls [type="color"] + label {
+    cursor: pointer;
+}
+.note-card:hover .controls img {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+.note-card .card-btn {
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+.note-card .pin {
+    width: 30px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }

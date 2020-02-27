@@ -7,6 +7,7 @@ var notesDB = [
         id: utilService.makeId(),
         type: 'NoteText',
         isPinned: true,
+        pinnedAt: null,
         info: {
             txt: 'Fullstack Me Baby!',
             title: ''
@@ -19,6 +20,7 @@ var notesDB = [
         id: utilService.makeId(),
         type: 'NoteImg',
         isPinned: false,
+        pinnedAt: null,
         info: {
             url: 'https://i.redd.it/qczy9rxos8321.jpg',
             title: 'Me playing Mi'
@@ -31,6 +33,7 @@ var notesDB = [
         id: utilService.makeId(),
         type: 'NoteTodos',
         isPinned: false,
+        pinnedAt: null,
         info: {
             title: 'Get these done:',
             todos: [
@@ -46,6 +49,7 @@ var notesDB = [
         id: utilService.makeId(),
         type: 'NoteVideo',
         isPinned: false,
+        pinnedAt: null,
         info: {
             url: 'cadvn16N188',
             title: 'Me playing Video'
@@ -58,6 +62,7 @@ var notesDB = [
         id: utilService.makeId(),
         type: 'NoteAudio',
         isPinned: false,
+        pinnedAt: null,
         info: {
             url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
             title: 'audio'
@@ -70,7 +75,31 @@ var notesDB = [
 
 export const keeperService = {
     getNotes,
-    addNewNote
+    addNewNote,
+    removeNote,
+    editNote
+}
+
+function editNote(noteData) {
+    const idx = notesDB.findIndex(note => note.id === noteData.id);
+    if (idx === -1) return Promise.reject();
+    
+    if (noteData.color) notesDB[idx].styles.backgroundColor = noteData.color;
+    else {
+        notesDB[idx].isPinned = !notesDB[idx].isPinned;
+        notesDB[idx].pinnedAt = Date.now();
+    }
+
+    storageService.store(NOTES_KEY, notesDB);
+    return Promise.resolve(notesDB);
+}
+
+function removeNote(id) {
+    const idx = notesDB.findIndex(note => note.id === id);
+    if (idx === -1) return Promise.reject();
+    notesDB.splice(idx, 1);
+    storageService.store(NOTES_KEY, notesDB);
+    return Promise.resolve(notesDB);
 }
 
 function getNotes() {
@@ -84,6 +113,31 @@ function getNotes() {
 }
 
 function addNewNote(noteData) {
-    debugger
+        noteData.txt = (noteData.noteType === 'NoteVideo') ? utilService.getYoutubeVidId(noteData.txt) : 
+                       (noteData.noteType === 'NoteTodos') ? noteData.txt.split(',') : noteData.txt;
+
+        const newNote = {
+            id: utilService.makeId(),
+            type: noteData.noteType,
+            isPinned: false,
+            pinnedAt: null,
+            info: {
+                title: noteData.noteTitle
+            },
+            styles: {
+                backgroundColor: '#ffffff'
+            }
+        }
+        if (noteData.noteType === 'NoteText') newNote.info.txt = noteData.txt;
+        else if (noteData.noteType === 'NoteTodos') {
+            newNote.info.todos =  noteData.txt.map(todo=> {
+                return { txt: todo, isDone: false }
+            });
+
+        } else newNote.info.url = noteData.txt;
+        
+        notesDB.unshift(newNote);
+        storageService.store(NOTES_KEY, notesDB);
+        return Promise.resolve(notesDB);
 }
 

@@ -6,6 +6,7 @@
 /* Keeper */
 @import './apps/keeper/keeper-add.css';
 @import './apps/keeper/keeper-list.css';
+@import './apps/keeper/keeper-filter.css';
 /* Emails */
 @import './apps/emails/emails-app.css';
 @import './apps/emails/cmps/email-filter.css';
