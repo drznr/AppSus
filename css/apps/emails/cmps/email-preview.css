@@ -2,8 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     padding: 15px 15px 15px 30px;
-    justify-content: space-between;}
-
+    justify-content: space-between;
+    border-top: solid 0.1px white;
+    border-bottom: solid 0.1px white;
+}
 
 .email-preview-card-info {
     display: flex;
@@ -18,4 +20,25 @@
 
 .email-preaview-body{
     padding-right: 10px;
+}
+
+.email-preview-controls-delete-icon{
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+.email-preview-controls-status-icon{
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    cursor: pointer;
+    right: 40px;
+}
+
+.starStatus{
+    color: gold;
+    text-shadow: -0.2px 0 black, 0 0.2px black, 0.2px 0 black, 0 -0.2px black;
 }

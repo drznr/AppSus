@@ -1,0 +1,20 @@
+.email-details-controls-delete-icon{
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+.email-details-controls-status-icon{
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    cursor: pointer;
+    right: 40px;
+}
+
+.email-details-reply-btn{
+    width: 60px;
+    height: 60px;
+}

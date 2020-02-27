@@ -7,14 +7,26 @@ export default {
         <h2>{{email.subject}}</h2>
         <div class="emails-sender-info-wrap">
             <p>{{email.from}}</p>
-            <span>✩</span>
+        </div>
+        <div class="email-controls-wrap">
+            <span @click="toggleStared" v-bind:class="{starStatus: email.isStared}">✩</span>
+            <img src="../../../imgs/icons/trash.png" 
+                class="email-details-controls-delete-icon" @click="deleteThis"/>
+            <img v-bind:src="'../../../imgs/icons/' + emailStatus + '.png'"
+                class="email-details-controls-status-icon" @click="toggleStatus"/>
         </div>
         <p>{{email.body}}</p>
+        <img src="../../../imgs/icons/reply.png" class="email-details-reply-btn"/>
     </section>
     `,
     data(){
-        return{
+        return{ 
             email: null
+        }
+    },
+    computed:{
+        emailStatus(){
+            return (this.email.isRead) ? 'open-mail' : 'mail'
         }
     },
     methods: {
@@ -23,7 +35,23 @@ export default {
             emailService.getEmailById(emailId)
             .then(email => {
                 this.email = email
-            })
+            }) 
+        },
+        toggleStared(){
+            emailService.toggleStarred(this.copyEmailId())
+        },
+        toggleStatus(){
+            console.log('opened/unopened');
+            emailService.updateEmailStatus(this.copyEmailId())
+            this.$router.push('/emails')
+        },
+        deleteThis(){
+            console.log('deleting');
+            emailService.deleteSelectedEmail(this.copyEmailId())   
+            this.$router.push('/emails')   
+        },
+        copyEmailId(){
+            return this.email.id.slice(0, this.email.id.length)
         }
     },
     created(){
