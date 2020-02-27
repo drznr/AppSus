@@ -1,5 +1,5 @@
 .keeper-filter {
-    text-align: right;
+    text-align: center;
     padding: 10px 30px;
 }
 .keeper-filter [type="text"] {
@@ -14,4 +14,10 @@
 .keeper-filter [type="text"]:focus, .keeper-filter select:focus {
     outline-color: transparent;
     border: 2px solid #AAC0D1;
+}
+
+@media only screen and (min-width: 900px) {
+    .keeper-filter {
+        text-align: right;
+    }
 }

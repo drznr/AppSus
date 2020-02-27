@@ -3,7 +3,7 @@
 export default {
     template: `
     <div class="long-text-container">
-        <p title="Click To Read More" @click="readMore" class="long-text">{{txtToDisplay}}</p>
+        <p title="Click To Read More" @click="readMore" class="long-text" :class="{long: isLongTxt}">{{txtToDisplay}}</p>
     </div>
     `,
     props: ['txt', 'chars'],
@@ -18,7 +18,7 @@ export default {
             if (!this.toggleReadMore && !this.isLongTxt) {
                 return this.txt
             } else if(!this.toggleReadMore && this.isLongTxt) {
-                return this.txt.substring(0, this.chars) + '...'
+                return this.txt.substring(0, this.chars) + '...';
             } else {
                 return this.txt
             }
