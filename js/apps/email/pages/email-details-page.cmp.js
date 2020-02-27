@@ -3,20 +3,25 @@ import { emailService } from "../service/email.service.js"
 
 export default {
     template: `
-    <section v-if="this.email" class="email-details-container">
+    <section v-if="email" class="email-details-container">
         <h2>{{email.subject}}</h2>
         <div class="emails-sender-info-wrap">
             <p>{{email.from}}</p>
         </div>
-        <div class="email-controls-wrap">
-            <span @click="toggleStared" v-bind:class="{starStatus: email.isStared}">✩</span>
+        <div class="email-details-controls-wrap">
+            <span @click="toggleStared" v-bind:class="{starStatus: email.isStared}">★</span>
             <img src="../../../imgs/icons/trash.png" 
                 class="email-details-controls-delete-icon" @click="deleteThis"/>
             <img v-bind:src="'../../../imgs/icons/' + emailStatus + '.png'"
                 class="email-details-controls-status-icon" @click="toggleStatus"/>
         </div>
-        <p>{{email.body}}</p>
-        <img src="../../../imgs/icons/reply.png" class="email-details-reply-btn"/>
+        <p class="email-details-body">{{email.body}}
+            <span v-if="email.replys" v-for="reply in email.replys">\n &nbsp; Re: {{reply}}</span>
+        </p>
+            
+        <router-link :to="'compose/' + email.id"> 
+            <img src="../../../imgs/icons/reply.png" class="email-details-reply-btn"/>
+        </router-link>
     </section>
     `,
     data(){
@@ -27,7 +32,7 @@ export default {
     computed:{
         emailStatus(){
             return (this.email.isRead) ? 'open-mail' : 'mail'
-        }
+        },
     },
     methods: {
         getEmail(){

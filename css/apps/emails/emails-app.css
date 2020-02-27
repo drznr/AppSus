@@ -1,8 +1,9 @@
 .email-container{
-    min-height: 73vh;
+    height: 71vh;
     display: grid;
     grid-template-rows: 1fr 9fr;
     grid-template-columns: 2fr 7fr;
+    padding: 30px;
 }
 
 .email-router-view{

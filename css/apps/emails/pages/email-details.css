@@ -14,7 +14,22 @@
     right: 40px;
 }
 
+.email-details-controls-wrap{
+    margin-bottom: 10px;
+}
+
 .email-details-reply-btn{
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    position: absolute;
+    cursor: pointer;
+} 
+
+.email-details-body{
+    white-space: pre-line;
+    overflow: scroll;
+    height: 38vh;
+    border-top: solid #706c61 1px;
+    padding: 10px;
 }

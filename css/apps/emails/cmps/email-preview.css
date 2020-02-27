@@ -1,15 +1,24 @@
 .email-preview-card{
     display: flex;
-    flex-wrap: wrap;
     padding: 15px 15px 15px 30px;
-    justify-content: space-between;
+    justify-content: normal;
     border-top: solid 0.1px white;
     border-bottom: solid 0.1px white;
+    min-width: 650px;
+}
+
+.email-preview-card a{
+    width: 90%;
+    margin: 0;
+}
+
+.email-preview-card-txts{
+    margin: 0;
+    width: 80%;
 }
 
 .email-preview-card-info {
     display: flex;
-    flex-wrap: wrap;
     width: 275px;
 }
 
@@ -20,22 +29,21 @@
 
 .email-preaview-body{
     padding-right: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .email-preview-controls-delete-icon{
     width: 28px;
     height: 28px;
-    position: absolute;
-    right: 10px;
     cursor: pointer;
 }
 
 .email-preview-controls-status-icon{
     width: 28px;
     height: 28px;
-    position: absolute;
     cursor: pointer;
-    right: 40px;
 }
 
 .starStatus{

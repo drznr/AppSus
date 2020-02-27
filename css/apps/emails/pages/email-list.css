@@ -6,3 +6,9 @@
 .mailOpened{
     background-color: rgba(0,0,0,0.015);
 }
+
+.emails-list-container{
+    height: 50vh;
+    overflow: scroll;
+
+}

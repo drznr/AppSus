@@ -4,7 +4,7 @@ export default {
     template: `
     <section v-if="email" class="email-preview-card-wrap"  v-bind:class="openedStatus">
         <div class="email-preview-card">
-                <span @click="toggleStared" v-bind:class="{starStatus: isStared}">✩</span>
+                <span @click="toggleStared" v-bind:class="{starStatus: isStared}">★</span>
             <router-link :to="'/emails/' + email.id">
                 <div class="email-preview-card-txts">
                 <span class="email-preview-card-info">

@@ -10,7 +10,7 @@ export default {
                     <hr class="email-compose-hr"/>
                     <input type="text" placeholder="Subject" v-model.trim="newEmail.subject"/>
                     <hr class="email-compose-hr"/>
-                    <textarea v-model.trim="newEmail.body"></textarea>
+                    <textarea v-model.trim="newEmail.body" ref="bodyTextaria"></textarea>
                     <button class="my-btn" @click.prevent="sendEmail">Send</button>
                 </div>
             </form>
@@ -38,5 +38,32 @@ export default {
             this.newEmail.subject = ''
             this.newEmail.body = ''
         }
+    },
+    created(){
+        const emailId = this.$route.params.id
+        if (emailId) {
+            emailService.getEmailById(emailId)
+                .then(email => {
+                    const copyEmail = JSON.parse(JSON.stringify(email))
+                    copyEmail.subject = 'Re: ' + copyEmail.subject
+                    copyEmail.body =  '\n'.repeat(12) + '_ '.repeat(30) + '\n \n' + 'From:' 
+                        + copyEmail.from + '\n' + copyEmail.body
+                    this.newEmail = copyEmail
+                })
+                
+        }        
     }
 }
+
+
+
+// const carId = this.$route.params.id;
+// if (carId) {
+//     carService.getById(carId)
+//         .then(car => {
+//             // DEEP copy
+//             const copyCar = JSON.parse(JSON.stringify(car))
+//             this.car = copyCar;
+//         })
+// }
+// },

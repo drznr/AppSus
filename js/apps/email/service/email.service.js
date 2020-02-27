@@ -14,13 +14,13 @@ export const emailService = {
 const EMAILS_KEY = 'emails';
 
 var emailsDB = [
-    {id: utilService.makeId(), from: 'Mamba', to: 'Miss Email', subject: 'Wassap?',
+    {id: utilService.makeId(), from: 'Mamba', to: 'jhon@doe.com', subject: 'Wassap?',
       body: utilService.makeLorem(30), isRead: true, isStared: true, sentAt : 1551133930594},
-    {id: utilService.makeId(), from: 'Puki', to: 'Miss Email', subject: 'Chase bank', 
+    {id: utilService.makeId(), from: 'Puki', to: 'jhon@doe.com', subject: 'Chase bank', 
       body: utilService.makeLorem(30), isRead: false, isStared: false, sentAt : 1551133930594},
-    {id: utilService.makeId(), from: 'Muki', to: 'Miss Email', subject: 'About they thing?', 
+    {id: utilService.makeId(), from: 'Muki', to: 'jhon@doe.com', subject: 'About they thing?', 
       body: utilService.makeLorem(30), isRead: false, isStared: false, sentAt : 1551133930594},
-    {id: utilService.makeId(), from: 'Shuki', to: 'Miss Email', subject: 'Regarding the stuff?',
+    {id: utilService.makeId(), from: 'Shuki', to: 'jhon@doe.com', subject: 'Regarding the stuff?',
       body: utilService.makeLorem(30), isRead: false, isStared: false, sentAt : 1551133930594},
 ]
 
@@ -49,7 +49,7 @@ function sendEmail(email){
   email.isRead = false
   email.isStared =false
   if(email.id) {
-    sendReply()
+    _sendReplay(email)
   } else {
     email.id = utilService.makeId()
     email.sentAt = Date.now()
@@ -58,8 +58,16 @@ function sendEmail(email){
   }
 }
 
-function sendReplay(){
-    console.log('replying');
+function _sendReplay(email){
+    if(!email.replys) email.replys = []
+    const idx = emailsDB.findIndex(emailFromDB => emailFromDB.id === email.id)
+    if (idx === -1) return Promise.reject('Did Not Send Email')  
+    email.replys.unshift(emailsDB[idx].body)
+    email.id = utilService.makeId()
+    email.sentAt = Date.now()
+    emailsDB.unshift(email)
+    storageService.store(EMAILS_KEY, emailsDB)
+    return Promise.resolve('Email Sent')
 }
 
 function deleteSelectedEmail(emailId){

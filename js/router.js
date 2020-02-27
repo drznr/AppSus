@@ -12,7 +12,7 @@ const routes = [
     {path: '/emails', component: emailAppCmp,
     children:[
         {path:'', component: emailListPage},
-        {path:'compose', component: emailComposePage},
+        {path:'compose/:id?', component: emailComposePage},
         {path:':id', component: emailDetailsPage},
     ]}
 ];
