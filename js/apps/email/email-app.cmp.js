@@ -8,7 +8,10 @@ export default {
         <section class="email-container">
             <email-filter @filtered="setFilter"></email-filter>
             <side-nav @showStared="showStarred"></side-nav>
-            <router-view :fillteredEmails="emailsForDispaly" class="email-router-view"></router-view>
+            <router-view :fillteredEmails="emailsForDispaly" class="email-router-view"
+            @deleteItGp="deletingEmail" @toggleStarGp="staringEmail"
+            @toggleStatusGp="toggelingEmailStatus" @emailSent="updateList">
+        </router-view>
         </section>
     `,
     data(){
@@ -47,6 +50,22 @@ export default {
         getStared(){
             var emails = JSON.parse(JSON.stringify(this.emails))
                 return emails.filter(email => email.isStared)
+        },
+        deletingEmail(emailId){
+            emailService.deleteSelectedEmail(emailId)
+            .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
+        },
+        staringEmail(emailId){
+            emailService.toggleStarred(emailId)
+            .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
+        },
+        toggelingEmailStatus(emailId){            
+            emailService.updateEmailStatus(emailId)
+            .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
+        },
+        updateList(){
+            emailService.query()
+            .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))
         }
     },
     components:{

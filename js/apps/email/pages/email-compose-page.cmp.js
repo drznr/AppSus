@@ -31,6 +31,7 @@ export default {
             emailService.sendEmail({...this.newEmail})
             this.cleanForm()
             this.$router.push('/emails')
+            this.$emit('emailSent')
         },
         cleanForm(){
             this.newEmail.from = 'nadav'
@@ -54,16 +55,3 @@ export default {
         }        
     }
 }
-
-
-
-// const carId = this.$route.params.id;
-// if (carId) {
-//     carService.getById(carId)
-//         .then(car => {
-//             // DEEP copy
-//             const copyCar = JSON.parse(JSON.stringify(car))
-//             this.car = copyCar;
-//         })
-// }
-// },

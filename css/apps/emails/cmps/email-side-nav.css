@@ -28,11 +28,3 @@
 .email-main-nav li:hover{
     color: #AAC0D3;
 }
-
-.email-main-nav li:hover::after{
-    content: '';
-    background-color: #AAC0D3;
-    width: 10px;
-    height: 100%;
-
-}

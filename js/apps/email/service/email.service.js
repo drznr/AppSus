@@ -55,6 +55,7 @@ function sendEmail(email){
     email.sentAt = Date.now()
     emailsDB.unshift(email)
     storageService.store(EMAILS_KEY, emailsDB)
+    return Promise.resolve(email)
   }
 }
 
@@ -67,7 +68,7 @@ function _sendReplay(email){
     email.sentAt = Date.now()
     emailsDB.unshift(email)
     storageService.store(EMAILS_KEY, emailsDB)
-    return Promise.resolve('Email Sent')
+    return Promise.resolve(email)
 }
 
 function deleteSelectedEmail(emailId){

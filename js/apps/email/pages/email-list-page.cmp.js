@@ -18,16 +18,13 @@ export default {
     },
     methods:{
         deletingEmail(emailId){
-            emailService.deleteSelectedEmail(emailId)
-            .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
+            this.$emit('deleteItGp', emailId)
         },
         staringEmail(emailId){
-            emailService.toggleStarred(emailId)
-            .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
+            this.$emit('toggleStarGp', emailId)
         },
-        toggelingEmailStatus(emailId){            
-            emailService.updateEmailStatus(emailId)
-            .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
+        toggelingEmailStatus(emailId){   
+            this.$emit('toggleStatusGp', emailId)
         }
     },
     created(){       
