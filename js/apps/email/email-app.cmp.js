@@ -7,24 +7,46 @@ export default {
     template: `
         <section class="email-container">
             <email-filter @filtered="setFilter"></email-filter>
-            <side-nav></side-nav>
-            <router-view :emails="emailsForDispaly" class="email-router-view"></router-view>
+            <side-nav @showStared="showStarred"></side-nav>
+            <router-view :fillteredEmails="emailsForDispaly" class="email-router-view"></router-view>
         </section>
     `,
     data(){
         return {
-            emails: null,
-            filterBy: { byName: '', byStatus: 'all' },
+            emails: [],
+            filterBy: null,
+            showingStared: false
         }
     },
     computed:{
-        emailsForDispaly(){
-
+        emailsForDispaly(){ 
+            if(this.showingStared === true) return this.getStared()
+            if (!this.filterBy) return this.emails
+            var filterByName = JSON.parse(JSON.stringify(this.filterBy.byName)).toLowerCase()
+            var emails = JSON.parse(JSON.stringify(this.emails))
+            if (this.filterBy.byStatus !== 'all') {
+                var filterByStatus = this.filterBy.byStatus === 'read'
+                emails = emails.filter(email => email.isRead === filterByStatus)
+                
+            }
+            return emails.filter(email => {                
+                return email.from.toLowerCase().includes(filterByName) ||
+                    email.body.toLowerCase().includes(filterByName) ||
+                    email.subject.toLowerCase().includes(filterByName) || 
+                    email.to.toLowerCase().includes(filterByName)          
+            })
         }
     },
     methods:{
         setFilter(filterBy){
             this.filterBy = filterBy
+        },
+        showStarred(){
+            this.showingStared = !this.showingStared
+        },
+        getStared(){
+            var emails = JSON.parse(JSON.stringify(this.emails))
+                return emails.filter(email => email.isStared)
         }
     },
     components:{
@@ -33,20 +55,7 @@ export default {
     },
     created(){
         emailService.query()
-        .then(emails => this.emails = emails)
-    }, 
+        .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))
+    },
 }
 
-
-
-
-// carsForDisplay() {
-//     if (!this.filterBy) return this.cars;
-//     return this.cars.filter(car => 
-//          car.vendor.includes(this.filterBy.vendor) && 
-//          car.speed > this.filterBy.minSpeed
-//     );
-// }
-// },
-
-// :cars="carsForDisplay"

@@ -1,4 +1,38 @@
 .side-nav-container{
     grid-row: 2 / 3;
     grid-column: 1 / 2;
+    display: flex;
+    color: #AAC0D3;
+    background-color: #303841;
+    margin: 0 10px 0 10px;
+    color: #F3F3F3;
+    font-family: 'incostabold' ,monospace;
+}
+
+.email-main-nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+}
+
+.email-main-nav >*{
+    cursor: pointer;
+    height: 20%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.email-main-nav li:hover{
+    color: #AAC0D3;
+}
+
+.email-main-nav li:hover::after{
+    content: '';
+    background-color: #AAC0D3;
+    width: 10px;
+    height: 100%;
+
 }

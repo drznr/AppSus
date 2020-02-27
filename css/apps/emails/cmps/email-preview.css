@@ -7,8 +7,15 @@
     min-width: 650px;
 }
 
+.email-preview-star{
+    font-size: 30px;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
 .email-preview-card a{
-    width: 90%;
+    width: 83%;
     margin: 0;
 }
 

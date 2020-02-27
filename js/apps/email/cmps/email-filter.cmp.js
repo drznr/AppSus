@@ -16,12 +16,12 @@ export default {
     `,
     data(){
         return {
-            filterBy: { byName: '', byStatus: 'all' }
+            filterBy: { byName: '', byStatus: 'all', }
         }
     },
     methods: {
-        emitFilter() {            
-            this.$emit('filtered', { ...this.filterBy })
+        emitFilter() {                        
+            this.$emit('filtered', {...this.filterBy})
         }
     },
 }
