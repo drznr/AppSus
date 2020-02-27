@@ -77,13 +77,53 @@ export const keeperService = {
     getNotes,
     addNewNote,
     removeNote,
-    editNote
+    editNote,
+    toggleTodo,
+    replaceTxt,
+    addTodo,
+    removeTodo
+}
+
+function removeTodo(noteData) {
+    const idx = notesDB.findIndex(note => note.id === noteData.id);
+    if (idx === -1) return Promise.reject();
+    
+    notesDB[idx].info.todos.splice(noteData.todoIdx, 1);
+    storageService.store(NOTES_KEY, notesDB);
+   return Promise.resolve(notesDB);
+}
+
+function addTodo(noteData) {
+    const idx = notesDB.findIndex(note => note.id === noteData.id);
+    if (idx === -1) return Promise.reject();
+
+    notesDB[idx].info.todos.push({txt: noteData.txt, isDone: false});
+    storageService.store(NOTES_KEY, notesDB);
+   return Promise.resolve(notesDB);
+}
+
+function replaceTxt(noteData) {
+    const idx = notesDB.findIndex(note => note.id === noteData.id);
+    if (idx === -1) return Promise.reject();
+
+    notesDB[idx].info.txt = noteData.txt;
+    storageService.store(NOTES_KEY, notesDB);
+    return Promise.resolve(notesDB);
+}
+
+function toggleTodo(todoData) {
+    const idx = notesDB.findIndex(note => note.id === todoData.noteId);
+    if (idx === -1) return Promise.reject();
+
+    notesDB[idx].info.todos[todoData.todoIdx].isDone = !notesDB[idx].info.todos[todoData.todoIdx].isDone;
+    storageService.store(NOTES_KEY, notesDB);
+    return Promise.resolve(notesDB);
 }
 
 function editNote(noteData) {
     const idx = notesDB.findIndex(note => note.id === noteData.id);
     if (idx === -1) return Promise.reject();
-    
+
     if (noteData.color) notesDB[idx].styles.backgroundColor = noteData.color;
     else {
         notesDB[idx].isPinned = !notesDB[idx].isPinned;
@@ -113,31 +153,31 @@ function getNotes() {
 }
 
 function addNewNote(noteData) {
-        noteData.txt = (noteData.noteType === 'NoteVideo') ? utilService.getYoutubeVidId(noteData.txt) : 
-                       (noteData.noteType === 'NoteTodos') ? noteData.txt.split(',') : noteData.txt;
+    noteData.txt = (noteData.noteType === 'NoteVideo') ? utilService.getYoutubeVidId(noteData.txt) :
+        (noteData.noteType === 'NoteTodos') ? noteData.txt.split(',') : noteData.txt;
 
-        const newNote = {
-            id: utilService.makeId(),
-            type: noteData.noteType,
-            isPinned: false,
-            pinnedAt: null,
-            info: {
-                title: noteData.noteTitle
-            },
-            styles: {
-                backgroundColor: '#ffffff'
-            }
+    const newNote = {
+        id: utilService.makeId(),
+        type: noteData.noteType,
+        isPinned: false,
+        pinnedAt: null,
+        info: {
+            title: noteData.noteTitle
+        },
+        styles: {
+            backgroundColor: '#ffffff'
         }
-        if (noteData.noteType === 'NoteText') newNote.info.txt = noteData.txt;
-        else if (noteData.noteType === 'NoteTodos') {
-            newNote.info.todos =  noteData.txt.map(todo=> {
-                return { txt: todo, isDone: false }
-            });
+    }
+    if (noteData.noteType === 'NoteText') newNote.info.txt = noteData.txt;
+    else if (noteData.noteType === 'NoteTodos') {
+        newNote.info.todos = noteData.txt.map(todo => {
+            return { txt: todo, isDone: false }
+        });
 
-        } else newNote.info.url = noteData.txt;
-        
-        notesDB.unshift(newNote);
-        storageService.store(NOTES_KEY, notesDB);
-        return Promise.resolve(notesDB);
+    } else newNote.info.url = noteData.txt;
+
+    notesDB.unshift(newNote);
+    storageService.store(NOTES_KEY, notesDB);
+    return Promise.resolve(notesDB);
 }
 

@@ -1,0 +1,60 @@
+.msg {
+    position: fixed;
+    top: 105px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid springgreen;
+    border-radius: 15px;
+    text-align: center;
+    padding: 5px 80px;
+    font-family: sans-serif;
+    color: grey;
+    background-image: url('../../imgs/icons/checked.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 5px;
+    z-index: 999;
+}
+.msg .close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    cursor: pointer;
+    background-color: springgreen;
+    border-radius: 50%;
+    line-height: 10px;
+}
+.msg h3 {
+    text-transform: uppercase;
+    font-family: monospace;
+    color: springgreen;
+    font-size: 1.5rem;
+    margin-bottom: 3px;
+}
+.msg p {
+    text-transform: capitalize;
+}
+.msg a {
+    color: initial;
+    text-decoration: underline;
+}
+
+.msg.fail {
+    border-color: red;
+    background-image: url('../../imgs/icons/close.png');
+}
+.msg.fail .close {
+    background-color: red;
+    color: white;
+}
+.msg.fail h3 {
+    color: red;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}

@@ -3,6 +3,7 @@
 @import './reset.css';
 @import './base.css';
 @import './cmps/main-header.css';
+@import './cmps/user-msg.css';
 /* Keeper */
 @import './apps/keeper/keeper-add.css';
 @import './apps/keeper/keeper-list.css';
