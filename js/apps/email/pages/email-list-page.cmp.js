@@ -26,10 +26,10 @@ export default {
             emailService.updateEmailStatus(emailId)
         }
     },
-    created(){
-        emailService.query()
-        .then(emails => this.emails = emails)
-    }, 
+    // created(){
+    //     emailService.query()
+    //     .then(emails => this.emails = emails)
+    // }, 
     components: {
         'email-preview': emailPreview,
     },

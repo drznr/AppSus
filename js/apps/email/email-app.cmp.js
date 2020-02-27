@@ -8,12 +8,18 @@ export default {
         <section class="email-container">
             <email-filter @filtered="setFilter"></email-filter>
             <side-nav></side-nav>
-            <router-view class="email-router-view"></router-view>
+            <router-view :emails="emailsForDispaly" class="email-router-view"></router-view>
         </section>
     `,
     data(){
         return {
+            emails: null,
             filterBy: { byName: '', byStatus: 'all' },
+        }
+    },
+    computed:{
+        emailsForDispaly(){
+
         }
     },
     methods:{
@@ -25,4 +31,22 @@ export default {
         'side-nav': emailSideNav,
         'email-filter': emailFilter
     },
+    created(){
+        emailService.query()
+        .then(emails => this.emails = emails)
+    }, 
 }
+
+
+
+
+// carsForDisplay() {
+//     if (!this.filterBy) return this.cars;
+//     return this.cars.filter(car => 
+//          car.vendor.includes(this.filterBy.vendor) && 
+//          car.speed > this.filterBy.minSpeed
+//     );
+// }
+// },
+
+// :cars="carsForDisplay"

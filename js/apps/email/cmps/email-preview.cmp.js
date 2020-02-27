@@ -1,5 +1,5 @@
 
-
+// buttons on mouse over and not active on mouse out
 export default {
     template: `
     <section v-if="email" class="email-preview-card-wrap"  v-bind:class="openedStatus">
