@@ -1,4 +1,3 @@
-import { utilService } from '../../../service/utils.js';
 
 export default {
     template: `
@@ -6,28 +5,28 @@ export default {
     <div class="add-input">
         <input type="text" 
         :placeholder="compPlaceholder" 
-        v-model="userInp" 
+        v-model="noteInfo.txt" 
         @keyup.enter="addNote" 
         class="info-inp" />
-        <input type="text" placeholder="Title" v-model="noteTitle" @keyup.enter="addNote" v-show="userInp" />
+        <input type="text" placeholder="Title" v-model="noteInfo.noteTitle" @keyup.enter="addNote" v-show="noteInfo.txt" />
         <span>
-            <input type="radio" name="note-type" id="txtNote" value="NoteText" v-model="noteType" />
+            <input type="radio" name="note-type" id="txtNote" value="NoteText" v-model="noteInfo.noteType" />
             <label for="txtNote">
                 <img src="../../../../imgs/icons/font.png" title="Add a text note" class="add-note-icon" />
             </label>
-            <input type="radio" name="note-type" id="imgNote" value="NoteImg" v-model="noteType" />
+            <input type="radio" name="note-type" id="imgNote" value="NoteImg" v-model="noteInfo.noteType" />
             <label for="imgNote">
                 <img src="../../../../imgs/icons/photo.png" title="Add an image note" class="add-note-icon" />
             </label>
-            <input type="radio" name="note-type" id="todosNote" value="NoteTodos" v-model="noteType" />
+            <input type="radio" name="note-type" id="todosNote" value="NoteTodos" v-model="noteInfo.noteType" />
             <label for="todosNote">
                 <img src="../../../../imgs/icons/list.png" title="Add to do's note" class="add-note-icon" />
             </label>
-            <input type="radio" name="note-type" id="videoNote" value="NoteVideo" v-model="noteType" />
+            <input type="radio" name="note-type" id="videoNote" value="NoteVideo" v-model="noteInfo.noteType" />
             <label for="videoNote">
                 <img src="../../../../imgs/icons/vid.png" title="Add a video note" class="add-note-icon" />
             </label>
-            <input type="radio" name="note-type" id="audioNote" value="NoteAudio" v-model="noteType" />
+            <input type="radio" name="note-type" id="audioNote" value="NoteAudio" v-model="noteInfo.noteType" />
             <label for="audioNote">
                 <img src="../../../../imgs/icons/aud.png" title="Add an audio note" class="add-note-icon" />
             </label>
@@ -37,15 +36,17 @@ export default {
     `,
     data() {
         return {
-            noteType: 'NoteText',
-            inpPlaceholder: '',
-            userInp: '',
-            noteTitle: ''
+            noteInfo: {
+                noteType: 'NoteText',
+                txt: '',
+                noteTitle: ''
+            },
+            inpPlaceholder: ''
         }
     },
     computed: {
         compPlaceholder() {
-            switch (this.noteType) {
+            switch (this.noteInfo.noteType) {
                 case 'NoteText':
                     this.inpPlaceholder = 'Whats on your mind...';
                     break;
@@ -69,8 +70,9 @@ export default {
     },
     methods: {
         addNote() {
-            this.userInp = (this.noteType === 'NoteVideo') ? utilService.getYoutubeVidId(this.userInp) : this.userInp;
-            this.$emit('note-add', {input: this.userInp, type: this.noteType, title: this.noteTitle})
+            this.$emit('note-add', {...this.noteInfo});
+            this.noteInfo.txt = '';
+            this.noteInfo.noteTitle = '';
         }
     }
 }
