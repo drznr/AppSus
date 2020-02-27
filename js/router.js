@@ -13,8 +13,8 @@ const routes = [
     children:[
         {path:'', component: emailListPage},
         {path:'compose/:id?', component: emailComposePage},
-        {path:'compose/:id&:txt', component: emailComposePage},
-        {path:':id', component: emailDetailsPage},
+        {path:'compose/:title/:txt', component: emailComposePage},
+        {path:':id', component: emailDetailsPage}
     ]}
 ];
 
