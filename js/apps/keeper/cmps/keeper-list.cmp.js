@@ -1,10 +1,11 @@
+import longTxtCmp from '../../../cmps/long-txt.cmp.js';
 
 var NoteText = {
     template: `
        <div class="note-card" :style="{backgroundColor: note.styles.backgroundColor}">
        <img v-if="note.isPinned" src="../../../../imgs/icons/color-pin.png" class="pin" />
         <h5>{{ note.info.title }}</h5>
-        <p>{{ note.info.txt }}</p>
+        <p><long-txt :txt="note.info.txt" :chars="100"></long-txt></p>
         <input type="text" v-if="onEdit" v-model="newTxt" @keyup.enter="$emit('txt-change', {txt:newTxt, id: note.id});onEdit=false;newTxt=''" />
         <div class="controls">
             <button class="card-btn" @click="$emit('pinned', note.id, note.isPinned)"><img src="../../../../imgs/icons/pin.png" title="Pin note" /></button>
@@ -32,6 +33,9 @@ var NoteText = {
             this.onEdit = ! this.onEdit;
             this.newTxt = (this.onEdit) ? this.newTxt : '';
         }
+    },
+    components: {
+        'long-txt': longTxtCmp
     }
 }
 var NoteImg = {

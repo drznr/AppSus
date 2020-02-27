@@ -4,6 +4,7 @@
 @import './base.css';
 @import './cmps/main-header.css';
 @import './cmps/user-msg.css';
+@import './cmps/long-txt.css';
 /* Keeper */
 @import './apps/keeper/keeper-add.css';
 @import './apps/keeper/keeper-list.css';

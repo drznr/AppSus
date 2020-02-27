@@ -5,7 +5,7 @@
 }
 .keeper-add .add-input {
     display: inline-block;
-    min-width: 70%;
+    width: 90%;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 3px;
@@ -73,4 +73,10 @@
 }
 .placeholder {
     height: 52px;
+}
+
+@media only screen and (min-width: 900px) {
+    .keeper-add .add-input {
+        width: 70%;
+    }
 }
