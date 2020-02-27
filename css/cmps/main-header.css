@@ -26,7 +26,7 @@
     width: 90%;
     padding: 50px 0;
     position: absolute;
-    top: 105px;
+    top: 107px;
     right: 0;
     background-color: #303841;
     transform: scaleX(0);
@@ -36,7 +36,7 @@
     transition: top .3s linear, transform .8s linear, opacity .8s linear;
 }
 .main-header:hover .main-nav {
-    top: 145px;
+    top: 127px;
 }
 .main-nav li:not(:last-child) {
     margin-bottom: 30px;

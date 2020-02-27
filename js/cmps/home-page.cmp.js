@@ -1,9 +1,11 @@
 export default {
   template: `
-      <main>
-        <h1>Welcome to AppSus</h1>
-        <div class="visual" ref="elVisualizer"></div>
-      </main>
+  <section>
+    <h1>Welcome to AppSus</h1>
+    <main>
+      <div class="visual" ref="elVisualizer"></div>
+    </main>
+  </section>
     `,
   mounted() {
     const elVisualizer = this.$refs.elVisualizer;

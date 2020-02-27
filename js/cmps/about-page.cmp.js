@@ -17,7 +17,7 @@ export default {
     <div class="about-page-card">
         <img src="../../imgs/daniel.jpg">
         <span>
-        <h3>Daniel Dresner</h3>
+        <h3>Nadav Julius</h3>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Quidem, beatae illum! Perspiciatis, distinctio ipsam? 

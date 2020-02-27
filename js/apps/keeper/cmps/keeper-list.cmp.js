@@ -176,6 +176,8 @@ export default {
                 @remove-todo="passTodoIdx"
                 ></component>
             </div>
+
+            
         </section>
     `,
     data() {
