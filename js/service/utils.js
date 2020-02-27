@@ -68,7 +68,7 @@ function getYoutubeVidId(url) {
 
     return (match && match[2].length === 11)
       ? match[2]
-      : null;
+      : '';
 }
 function dynamicSort(property) {
     var sortOrder = 1;

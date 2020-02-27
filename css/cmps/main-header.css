@@ -12,7 +12,7 @@
     user-select: none;
 }
 .main-header:hover {
-    padding: 30px 40px;
+    padding: 20px 40px;
 }
 .main-header [alt="logo"] {
     width: 50px;
@@ -26,7 +26,7 @@
     width: 90%;
     padding: 50px 0;
     position: absolute;
-    top: 105px;
+    top: 107px;
     right: 0;
     background-color: #303841;
     transform: scaleX(0);
@@ -36,7 +36,7 @@
     transition: top .3s linear, transform .8s linear, opacity .8s linear;
 }
 .main-header:hover .main-nav {
-    top: 145px;
+    top: 127px;
 }
 .main-nav li:not(:last-child) {
     margin-bottom: 30px;
@@ -123,10 +123,10 @@
     .main-nav a::after {
         width: 100%;
         height: 5px;
-        top: 55px;
+        top: 57px;
         left: 0;
     }
     .main-header:hover .main-nav a::after {
-        top: 75px;
+        top: 67px;
     }
 }

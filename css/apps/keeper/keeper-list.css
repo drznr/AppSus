@@ -1,9 +1,11 @@
 .keeper-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-    grid-auto-rows: auto;
-    grid-gap: 30px;
+    column-count: 1;
     padding: 0 30px;
+    min-height: 60vh;
+}
+.keeper-list>* {
+    break-inside: avoid;
+    padding: 5px;
 }
 .note-card {
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .75);
@@ -54,6 +56,17 @@
 }
 .add-todo, .remove-todo {
     float: right;
-    display: inline-block;
     cursor: pointer;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .keeper-list {
+        column-count: 2;
+    }
+}
+@media only screen and (min-width: 900px) {
+    .keeper-list {
+        column-count: 4;
+    }
 }

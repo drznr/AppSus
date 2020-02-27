@@ -23,7 +23,7 @@ export default {
     watch: {
         filterBy: {
             handler() {
-                this.$emit('set-filter', this.filterBy)
+                this.$emit('set-filter', this.filterBy);
             },
             deep: true
         }

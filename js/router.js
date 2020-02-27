@@ -4,6 +4,7 @@ import emailAppCmp from './apps/email/email-app.cmp.js';
 import emailDetailsPage from './apps/email/pages/email-details-page.cmp.js';
 import emailListPage from './apps/email/pages/email-list-page.cmp.js';
 import emailComposePage from './apps/email/pages/email-compose-page.cmp.js';
+import aboutPageCmp from './cmps/about-page.cmp.js';
 
 
 const routes = [
@@ -13,9 +14,10 @@ const routes = [
     children:[
         {path:'', component: emailListPage},
         {path:'compose/:id?', component: emailComposePage},
-        {path:'compose/:id&:txt', component: emailComposePage},
-        {path:':id', component: emailDetailsPage},
-    ]}
+        {path:'compose/:title/:txt', component: emailComposePage},
+        {path:':id', component: emailDetailsPage}
+    ]},
+    {path: '/about', component: aboutPageCmp}
 ];
 
 export const router = new VueRouter({routes});
