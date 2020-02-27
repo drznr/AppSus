@@ -75,7 +75,7 @@ const idx = emailsDB.findIndex(email => email.id === emailId)
 if (idx === -1) return Promise.reject('Did Not Remove Email')  
  emailsDB.splice(idx, 1)
  storageService.store(EMAILS_KEY, emailsDB)
-  return Promise.resolve('Email Deleted')
+  return Promise.resolve(emailsDB)
 }
 
 function toggleStarred(emailId){  
@@ -83,7 +83,7 @@ function toggleStarred(emailId){
   if (idx === -1) return Promise.reject('Couldnt LocateEmail')  
     emailsDB[idx].isStared = !emailsDB[idx].isStared
     storageService.store(EMAILS_KEY, emailsDB)
-    return Promise.resolve('Email Marked As Favorate')
+    return Promise.resolve(emailsDB)
 }
 
 function updateEmailStatus(emailId){
@@ -91,5 +91,5 @@ function updateEmailStatus(emailId){
   if (idx === -1) return Promise.reject('Couldnt LocateEmail')  
     emailsDB[idx].isRead = !emailsDB[idx].isRead
     storageService.store(EMAILS_KEY, emailsDB)
-    return Promise.resolve('Email Marked As Favorate')
+    return Promise.resolve(emailsDB)
 }

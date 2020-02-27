@@ -4,7 +4,7 @@ export default {
     template: `
     <section v-if="email" class="email-preview-card-wrap"  v-bind:class="openedStatus">
         <div class="email-preview-card">
-                <span @click="toggleStared" v-bind:class="{starStatus: isStared}">★</span>
+                <span @click="toggleStared" v-bind:class="{starStatus: isStared}" class="email-preview-star">★</span>
             <router-link :to="'/emails/' + email.id">
                 <div class="email-preview-card-txts">
                 <span class="email-preview-card-info">
@@ -38,7 +38,6 @@ export default {
     },
     methods:{
         deleteThis(){
-            // var emailIdCopy = this.currEmail.id.slice(0, this.currEmail.id.length)
             this.$emit('deleteEmail', this.copyEmailId())
         },
         toggleStared(){
@@ -53,10 +52,13 @@ export default {
            return this.currEmail.id.slice(0, this.currEmail.id.length)
         }
     },
+    watch: {
+        $route() {
+
+        }
+    },
     created(){
         this.currEmail = this.email
         this.isStared = this.email.isStared
     }
-};
-
- 
+}

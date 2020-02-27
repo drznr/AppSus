@@ -4,12 +4,13 @@ import emailPreview from '../cmps/email-preview.cmp.js'
 export default {
     template: `
     <section class="emails-list-container">
-            <email-preview v-for="email in emails" :email="email" 
+            <email-preview v-for="email in fillteredEmails" :email="email" 
                 v-bind:key="email.id" @deleteEmail="deletingEmail" 
                 @starEmail="staringEmail" @toggleEmailStatus="toggelingEmailStatus">
             </email-preview>
     </section>
     `, 
+    props: ['fillteredEmails'],
     data(){
         return {
             emails: [],
@@ -17,19 +18,21 @@ export default {
     },
     methods:{
         deletingEmail(emailId){
-            emailService.deleteSelectedEmail(emailId)      
+            emailService.deleteSelectedEmail(emailId)
+            .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
         },
         staringEmail(emailId){
             emailService.toggleStarred(emailId)
+            .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
         },
-        toggelingEmailStatus(emailId){
+        toggelingEmailStatus(emailId){            
             emailService.updateEmailStatus(emailId)
+            .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
         }
     },
-    // created(){
-    //     emailService.query()
-    //     .then(emails => this.emails = emails)
-    // }, 
+    created(){       
+        this.emails = JSON.parse(JSON.stringify(this.fillteredEmails))
+    }, 
     components: {
         'email-preview': emailPreview,
     },

@@ -66,28 +66,3 @@ export default {
 
 
 
-
-
-// methods: {
-//     getBook(){
-//         const bookId = this.$route.params.id
-//         bookService.getBookById(bookId)
-//         .then(book => {
-//             this.book = book
-//             this.nextPrevBookIds = bookService.getNextPrevBookIds(book.id)
-//         })
-//     },
-// },
-// watch: {
-//     '$route.params.id'(){
-//         this.getBook()
-//     }
-// },
-// components:{
-//     'long-txt': longTxt,
-//     'review-add': reviewAdd,
-// },
-// created(){
-//     this.getBook()  
-// }
-// };
