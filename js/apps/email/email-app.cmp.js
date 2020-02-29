@@ -58,10 +58,11 @@ export default {
         },
         showStarred(){
             this.showingStared = !this.showingStared
+            
         },
         getStared(){
             var emails = JSON.parse(JSON.stringify(this.emails))
-                return emails.filter(email => email.isStared)
+            return emails.filter(email => email.isStared)
         },
         deletingEmail(emailId){
             emailService.deleteSelectedEmail(emailId)

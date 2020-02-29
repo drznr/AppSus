@@ -47,12 +47,10 @@ export default {
             emailService.toggleStarred(this.copyEmailId())
         },
         toggleStatus(){
-            console.log('opened/unopened');
             emailService.updateEmailStatus(this.copyEmailId())
             this.$router.push('/emails')
-        }, 
+        },
         deleteThis(){
-            console.log('deleting');
             emailService.deleteSelectedEmail(this.copyEmailId())   
             this.$router.push('/emails')   
         },

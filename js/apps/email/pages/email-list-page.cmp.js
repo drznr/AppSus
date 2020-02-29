@@ -13,7 +13,7 @@ export default {
     props: ['fillteredEmails'],
     watch:{
         fillteredEmails: function(to){
-            this.emails = JSON.parse(JSON.stringify(to))            
+            this.emails = JSON.parse(JSON.stringify(to))     
         }
     },
     data(){

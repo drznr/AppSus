@@ -38,10 +38,11 @@ function query() {
 function getEmailById(emailId) {
   var emails = storageService.load(EMAILS_KEY);
   (!emails) ?  emails = emailsDB : emailsDB = emails
-  storageService.store(EMAILS_KEY, emailsDB)
   var email = emails.find(email => {
     return email.id === emailId
   })
+  email.isRead = true
+  storageService.store(EMAILS_KEY, emailsDB)
   return Promise.resolve(email)
 }
 

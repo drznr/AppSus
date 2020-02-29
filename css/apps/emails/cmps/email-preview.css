@@ -1,4 +1,4 @@
-.email-preview-card{
+.email-preview-card {
     display: flex;
     padding: 15px 15px 15px 30px;
     justify-content: normal;
@@ -6,19 +6,19 @@
     border-bottom: solid 0.1px white;
 }
 
-.email-preview-star{
+.email-preview-star {
     font-size: 30px;
     text-align: center;
     padding: 5px;
     cursor: pointer;
 }
 
-.email-preview-card a{
+.email-preview-card a {
     width: 83%;
     margin: 0;
 }
 
-.email-preview-card-txts{
+.email-preview-card-txts {
     margin: 0;
     width: 80%;
 }
@@ -28,52 +28,53 @@
     width: 275px;
 }
 
-.email-preview-card-info >* {
+.email-preview-card-info>* {
     padding: 5px;
     padding-right: 3px;
 }
 
-.email-preaview-body{
+.email-preaview-body {
     padding-right: 10px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.email-preview-controls-delete-icon{
+.email-preview-controls-delete-icon {
     width: 28px;
     height: 28px;
     cursor: pointer;
 }
 
-.email-preview-controls-status-icon{
+.email-preview-controls-status-icon {
     width: 28px;
     height: 28px;
     cursor: pointer;
 }
 
-.starStatus{
+.starStatus {
     color: gold;
     text-shadow: -0.2px 0 black, 0 0.2px black, 0.2px 0 black, 0 -0.2px black;
 }
 
-
-@media only screen and (max-width: 525px){
-    .email-preview-controls-delete-icon{
+@media only screen and (max-width: 525px) {
+    .email-preview-controls-delete-icon {
         right: 20px;
         position: absolute;
         background-color: #F3F3F3;
-
     }
-    
-    .email-preview-controls-status-icon{
+    .email-preview-controls-status-icon {
         right: 50px;
         position: absolute;
         background-color: #F3F3F3;
-
     }
-
-    .email-preview-card{
+    .email-preview-card {
         padding: 0;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .email-preview-card-info {
+        width: 225px;
     }
 }
