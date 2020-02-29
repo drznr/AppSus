@@ -9,17 +9,18 @@ export default {
             <p>{{email.from}}</p>
         </div>
         <div class="email-details-controls-wrap">
-            <span @click="toggleStared" v-bind:class="{starStatus: email.isStared}">★</span>
-            <img src="../../../imgs/icons/trash.png" 
+            <span @click="toggleStared" v-bind:class="{starStatus: email.isStared}" 
+                class="email-deatails-star"  title="Mark/Unmark Favorate">★</span>
+            <img src="../../../imgs/icons/trash.png" title="Delete Mail"
                 class="email-details-controls-delete-icon" @click="deleteThis"/>
-            <img v-bind:src="'../../../imgs/icons/' + emailStatus + '.png'"
+            <img v-bind:src="'../../../imgs/icons/' + emailStatus + '.png'" title="Mark Unread/Read"
                 class="email-details-controls-status-icon" @click="toggleStatus"/>
         </div>
         <p class="email-details-body">{{email.body}}
             <span v-if="email.replys" v-for="reply in email.replys">\n &nbsp; Re: {{reply}}</span>
         </p>
             
-        <router-link :to="'compose/' + email.id"> 
+        <router-link :to="'compose/' + email.id" title="Reaply"> 
             <img src="../../../imgs/icons/reply.png" class="email-details-reply-btn"/>
         </router-link>
     </section>
@@ -49,7 +50,7 @@ export default {
             console.log('opened/unopened');
             emailService.updateEmailStatus(this.copyEmailId())
             this.$router.push('/emails')
-        },
+        }, 
         deleteThis(){
             console.log('deleting');
             emailService.deleteSelectedEmail(this.copyEmailId())   

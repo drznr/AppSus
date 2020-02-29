@@ -49,7 +49,7 @@ function sendEmail(email){
   email.isRead = false
   email.isStared =false
   if(email.id) {
-    _sendReplay(email)
+  return _sendReplay(email)
   } else {
     email.id = utilService.makeId()
     email.sentAt = Date.now()

@@ -4,7 +4,8 @@ export default {
     template: `
     <section v-if="email" class="email-preview-card-wrap"  v-bind:class="openedStatus">
         <div class="email-preview-card">
-                <span @click="toggleStared" v-bind:class="{starStatus: isStared}" class="email-preview-star">★</span>
+                <span @click="toggleStared" v-bind:class="{starStatus: this.email.isStared}"
+                    title="Mark/Unmark Favorate" class="email-preview-star">★</span>
             <router-link :to="'/emails/' + email.id">
                 <div class="email-preview-card-txts">
                 <span class="email-preview-card-info">
@@ -14,9 +15,9 @@ export default {
                 <p class="email-preaview-body">{{email.body}}</p>
                 </div>
             </router-link>   
-            <img src="../../../imgs/icons/trash.png" 
+            <img src="../../../imgs/icons/trash.png" title="Delete Mail"
                 class="email-preview-controls-delete-icon" @click="deleteThis">
-            <img v-bind:src="'../../../imgs/icons/' + emailStatus + '.png'"
+            <img v-bind:src="'../../../imgs/icons/' + emailStatus + '.png'" title="Mark Unread/Read"
                 class="email-preview-controls-status-icon" @click="toggleStatus">
         </div>
     </section>
@@ -25,12 +26,17 @@ export default {
     data(){
         return {
             currEmail: null,
-            isStared: null
+        }
+    },
+    watch:{
+        eamil(){
+            this.currEmail = JSON.parse(JSON.stringify(this.eamil))
+            this.emailStatus()
         }
     },
     computed:{
         emailStatus(){
-            return (this.currEmail.isRead) ? 'open-mail' : 'mail'
+            return (this.email.isRead) ? 'open-mail' : 'mail'
         },
         openedStatus(){
             return {mailOpened: this.email.isRead, mailClosed: !this.email.isRead}
@@ -42,23 +48,16 @@ export default {
         },
         toggleStared(){
             this.$emit('starEmail', this.copyEmailId())
-            this.isStared = this.email.isStared
         },
         toggleStatus(){
             this.$emit('toggleEmailStatus', this.copyEmailId())
-            this.currEmail = this.email
+            this.currEmail = JSON.parse(JSON.stringify(this.email))
         },
         copyEmailId(){
            return this.currEmail.id.slice(0, this.currEmail.id.length)
         }
     },
-    watch: {
-        $route() {
-
-        }
-    },
     created(){
-        this.currEmail = this.email
-        this.isStared = this.email.isStared
+        this.currEmail = JSON.parse(JSON.stringify(this.email))
     }
 }

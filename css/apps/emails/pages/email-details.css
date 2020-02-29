@@ -2,7 +2,7 @@
     width: 28px;
     height: 28px;
     position: absolute;
-    right: 10px;
+    right: 4vw;
     cursor: pointer;
 }
 
@@ -11,25 +11,71 @@
     height: 28px;
     position: absolute;
     cursor: pointer;
-    right: 40px;
+    right: 7vw;
 }
 
 .email-details-controls-wrap{
-    margin-bottom: 10px;
+    margin-bottom: 10px; 
 }
 
-.email-details-reply-btn{
+.email-details-reply-btn{ 
     width: 40px;
     height: 40px;
     bottom: 10px;
     position: absolute;
     cursor: pointer;
+    background-color: #F3F3F3;
 } 
 
 .email-details-body{
     white-space: pre-line;
     overflow: scroll;
-    height: 38vh;
+    height: 44vh;
     border-top: solid #706c61 1px;
     padding: 10px;
+}
+
+.email-deatails-star{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.email-details-container{
+    width: 70vw;
+}
+
+@media only screen and (max-width: 900px) {
+    .email-details-controls-delete-icon{
+        right: 1vw;
+    }
+    
+    .email-details-controls-status-icon{
+        right: 7vw;
+    }
+    .email-details-body{
+        width: 91vw;
+    }
+    .email-details-reply-btn{
+        bottom: -47px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .email-details-controls-delete-icon{
+        width: 20px;
+        height: 20px;
+        right: 8vw;
+    }
+    
+    .email-details-controls-status-icon{
+        width: 20px;
+        height: 20px;
+        right: 19vw;
+    }
+    .email-details-body{
+        height: 59vh;
+    }
+    .email-details-reply-btn{
+        bottom: -150px;
+    }
 }

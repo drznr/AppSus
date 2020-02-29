@@ -14,7 +14,7 @@ export default {
                     <button class="my-btn" @click.prevent="sendEmail">Send</button>
                 </div>
             </form>
-        </section>
+        </section> 
     `,
     data(){
         return {

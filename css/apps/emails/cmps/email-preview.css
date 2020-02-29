@@ -4,7 +4,6 @@
     justify-content: normal;
     border-top: solid 0.1px white;
     border-bottom: solid 0.1px white;
-    min-width: 650px;
 }
 
 .email-preview-star{
@@ -56,4 +55,25 @@
 .starStatus{
     color: gold;
     text-shadow: -0.2px 0 black, 0 0.2px black, 0.2px 0 black, 0 -0.2px black;
+}
+
+
+@media only screen and (max-width: 525px){
+    .email-preview-controls-delete-icon{
+        right: 20px;
+        position: absolute;
+        background-color: #F3F3F3;
+
+    }
+    
+    .email-preview-controls-status-icon{
+        right: 50px;
+        position: absolute;
+        background-color: #F3F3F3;
+
+    }
+
+    .email-preview-card{
+        padding: 0;
+    }
 }

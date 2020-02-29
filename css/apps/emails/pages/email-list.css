@@ -8,7 +8,20 @@
 }
 
 .emails-list-container{
-    height: 50vh;
+    height: 58vh;
     overflow: scroll;
+    width: 70vw;
+} 
 
+
+@media only screen and (max-width: 900px) {
+    .emails-list-container{
+        width: 91vw;
+    }
+}
+
+@media only screen and (max-width: 525px){
+    .emails-list-container{
+        height: 76vh;
+    }
 }

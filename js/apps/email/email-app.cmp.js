@@ -1,28 +1,35 @@
 import {emailService} from './service/email.service.js'
 import emailSideNav from './cmps/email-side-nav.cmp.js'
 import emailFilter from './cmps/email-filter.cmp.js'
+import composeBtn from './cmps/email-compose-btn.js'
 
 
 export default {
     template: `
         <section class="email-container">
-            <email-filter @filtered="setFilter"></email-filter>
+            <compose-btn @composeMail="routeToCompose"></compose-btn>
+            <email-filter :emails="emails" @filtered="setFilter"></email-filter>
             <side-nav @showStared="showStarred"></side-nav>
             <router-view :fillteredEmails="emailsForDispaly" class="email-router-view"
-            @deleteItGp="deletingEmail" @toggleStarGp="staringEmail"
-            @toggleStatusGp="toggelingEmailStatus" @emailSent="updateList">
-        </router-view>
+                @deleteItGp="deletingEmail" @toggleStarGp="staringEmail"
+                @toggleStatusGp="toggelingEmailStatus" @emailSent="updateList">
+            </router-view>
         </section>
     `,
     data(){
         return {
             emails: [],
             filterBy: null,
-            showingStared: false
+            showingStared: false,
+        }
+    },
+    watch:{
+        $route(){
+            this.updateList()         
         }
     },
     computed:{
-        emailsForDispaly(){ 
+        emailsForDispaly(){
             if(this.showingStared === true) return this.getStared()
             if (!this.filterBy) return this.emails
             var filterByName = JSON.parse(JSON.stringify(this.filterBy.byName)).toLowerCase()
@@ -41,6 +48,11 @@ export default {
         }
     },
     methods:{
+        routeToCompose(){
+            console.log('pushing');
+            
+            this.$router.push('/emails/compose')  
+        },
         setFilter(filterBy){
             this.filterBy = filterBy
         },
@@ -55,7 +67,7 @@ export default {
             emailService.deleteSelectedEmail(emailId)
             .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
         },
-        staringEmail(emailId){
+        staringEmail(emailId){            
             emailService.toggleStarred(emailId)
             .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))   
         },
@@ -70,7 +82,8 @@ export default {
     },
     components:{
         'side-nav': emailSideNav,
-        'email-filter': emailFilter
+        'email-filter': emailFilter,
+        'compose-btn': composeBtn
     },
     created(){
         emailService.query()

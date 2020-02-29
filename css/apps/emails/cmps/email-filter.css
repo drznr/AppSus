@@ -1,11 +1,86 @@
 .email-filter-container{
     grid-row: 1 / 2;
     grid-column: 2 / 3;
-    padding: 0 30px 30px 0;
+    padding: 15px;
+    display: flex;
 }
 
 .email-search-input{
-    width: 60%;
+    width: 80%;
     border-color: transparent;
     padding: .9rem;
+} 
+
+.email-filter-radio{
+    display: none;
+}
+
+.email-filter-radio-lable{
+    margin: auto 10px auto 10px;
+    font-family: cutive, monospace;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.email-filter-radio-lable:hover{
+    color: rgb(26, 81, 129);
+}
+
+.email-filter-bystatus-wrap{
+    font-size: 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+.email-filter-bystatus-controls{
+    grid-row: 1 / 2;
+    grid-column:  1/ 3;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.email-filter-bystatus-results{
+    grid-row: 2 / 3;
+    grid-column:  1/ 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.2rem;
+    font-family: major;
+    font-weight: 900;
+}
+
+.email-filter-bystatus-results p{
+    padding-left: 3px;
+}
+
+@media only screen and (max-width: 900px){
+    .email-filter-container{
+        /* flex-direction: column; */
+        grid-row: 1 / 2;
+        grid-column: 1 / 4;
+    }
+    
+}
+
+@media only screen and (max-width: 525px){
+    .email-filter-container{
+        grid-row: 1 / 3;
+        grid-column: 1 / 5;
+        flex-direction: column-reverse;
+    }
+    .email-search-input {
+        width: 100%;
+        height: 30px;
+        margin: 5px;
+    }
+    .email-filter-bystatus-controls{
+        justify-content: space-around;
+    }
+    .email-filter-bystatus-results{
+        font-size: .8rem;
+    }
 }

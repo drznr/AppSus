@@ -15,7 +15,7 @@ export default {
           </span>
     </div>
     <div class="about-page-card">
-        <img src="../../imgs/daniel.jpg">
+        <img src="../../imgs/nadav.jpg">
         <span>
         <h3>Nadav Julius</h3>
         <p>

@@ -7,7 +7,7 @@ export default {
         id="addMainInput" 
         :placeholder="compPlaceholder" 
         v-model="noteInfo.txt" 
-        @keyup.enter="addNote" 
+        @keyup.enter="addNote"  
         class="info-inp" />
         <label for="addMainInput">{{ compPlaceholder }}</label>
         <input type="text" placeholder="Title" v-model="noteInfo.noteTitle" id="titleInput" @keyup.enter="addNote" v-show="noteInfo.txt" />
