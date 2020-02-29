@@ -9,7 +9,7 @@ export default {
         <section class="email-container">
             <compose-btn @composeMail="routeToCompose"></compose-btn>
             <email-filter :emails="emails" @filtered="setFilter"></email-filter>
-            <side-nav @showStared="showStarred"></side-nav>
+            <side-nav @showStared="showStarred" @showInbox="showingInbox"></side-nav>
             <router-view :fillteredEmails="emailsForDispaly" class="email-router-view"
                 @deleteItGp="deletingEmail" @toggleStarGp="staringEmail"
                 @toggleStatusGp="toggelingEmailStatus" @emailSent="updateList">
@@ -59,6 +59,9 @@ export default {
         showStarred(){
             this.showingStared = !this.showingStared
             
+        },
+        showingInbox(){
+            this.showingStared = false
         },
         getStared(){
             var emails = JSON.parse(JSON.stringify(this.emails))

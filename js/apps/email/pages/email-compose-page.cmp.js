@@ -18,12 +18,12 @@ export default {
     `,
     data(){
         return {
-            newEmail: {
-                from: 'nadav',
-                to: '',
-                subject: '',
-                body:''
-            },
+            newEmail: null
+        }
+    },
+    watch:{
+        $route(){
+            this.init()
         }
     },
     methods: {
@@ -38,20 +38,33 @@ export default {
             this.newEmail.to = ''
             this.newEmail.subject = ''
             this.newEmail.body = ''
+        },
+        init(){
+            this.newEmail = {
+                from: 'nadav',
+                to: '',
+                subject: '',
+                body:''
+            }
+            const emailId = this.$route.params.id
+            const keeperTitle = this.$route.params.title
+            const keeperBody = this.$route.params.txt
+            if (!keeperTitle && emailId) {
+                emailService.getEmailById(emailId)
+                    .then(email => {
+                        const copyEmail = JSON.parse(JSON.stringify(email))
+                        copyEmail.subject = 'Re: ' + copyEmail.subject
+                        copyEmail.body =  '\n'.repeat(12) + '_ '.repeat(30) + '\n \n' + 'From:' 
+                            + copyEmail.from + '\n' + copyEmail.body
+                        this.newEmail = copyEmail
+                    })    
+            } else if (keeperTitle){
+                this.newEmail.subject = keeperTitle
+                this.newEmail.body = keeperBody   
+            }        
         }
     },
     created(){
-        const emailId = this.$route.params.id
-        if (emailId) {
-            emailService.getEmailById(emailId)
-                .then(email => {
-                    const copyEmail = JSON.parse(JSON.stringify(email))
-                    copyEmail.subject = 'Re: ' + copyEmail.subject
-                    copyEmail.body =  '\n'.repeat(12) + '_ '.repeat(30) + '\n \n' + 'From:' 
-                        + copyEmail.from + '\n' + copyEmail.body
-                    this.newEmail = copyEmail
-                })
-                
-        }        
+        this.init()    
     }
 }

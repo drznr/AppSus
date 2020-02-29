@@ -1,12 +1,11 @@
-// TODO display amount of emails that are read or unread
 
 
 export default {
     template:`
     <section class="email-status-container">
         <p v-if="myEmails">{{allEmails}}</p>
-        <p v-if="myEmails">2</p>
-        <p v-if="myEmails">4</p>
+        <p v-if="myEmails">{{readEmails}}</p>
+        <p v-if="myEmails">{{unreadEmails}}</p>
     </section>
     `,
     props: ['emails'],
@@ -19,27 +18,23 @@ export default {
         allEmails(){
             return this.myEmails.length
         },
-        // readEmails(){
-        //    var readEmails = JSON.parse(JSON.stringify(this.myEmails))
-        //    var counter = 0
-        //    counter = readEmails.forEach(function(email, idx) {
-        //        var b = 0
-        //        console.log(email.isRead);
-               
-        //        if(!email.isRead) b++
-        //        return b
-
-        //     })
-            
-        //     return counter
-        // },
-        // unreadEmails(){
-        //     var unreadEmails = JSON.parse(JSON.stringify(this.myEmails))
-        //     unreadEmails.forEach(function(email, idx) {
-        //         if(!email.isRead) unreadEmails.splice(idx, 1)
-        //     })
-        //     return unreadEmails.length
-        // },
+        readEmails(){
+            var counter = 0 
+           var readEmails = JSON.parse(JSON.stringify(this.myEmails))
+           readEmails.forEach(email => {
+               if(email.isRead) counter++
+            })
+            return counter
+        },
+        unreadEmails(){
+            var counter = 0 
+            var unreadEmails = JSON.parse(JSON.stringify(this.myEmails))
+            unreadEmails.forEach(email => {
+                if(!email.isRead) counter++
+                
+            })
+            return counter
+        },
     },
     watch:{
         emails(){

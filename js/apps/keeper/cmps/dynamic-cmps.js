@@ -17,7 +17,7 @@ export const dynamicNotes = {
                 </label>
                 </button>
                 <button class="card-btn" @click="toggleEdit"><img src="imgs/icons/edit.png" title="Edit note"/></button>
-                <router-link class="card-btn" :to="'emails/compose/' + note.info.title + '/' + note.info.txt"><img src="imgs/icons/send.png" title="Send note"/></router-link>
+                <router-link class="card-btn" :to="'emails/compose/' + note.id + '/' + title + '/' + txt"><img src="imgs/icons/send.png" title="Send note"/></router-link>
                 <button class="card-btn" @click="$emit('removed', note.id)"><img src="imgs/icons/bin.png" title="Remove note" /></button>
             </div>
            </div>
@@ -28,6 +28,14 @@ export const dynamicNotes = {
                 color: this.note.styles.backgroundColor,
                 newTxt: '',
                 onEdit: false
+            }
+        },
+        computed:{
+            title(){
+                return (this.note.info.title) ? this.note.info.title : '-'
+            },
+            txt(){
+                return (this.note.info.txt) ? this.note.info.txt : '-'
             }
         },
         methods: {

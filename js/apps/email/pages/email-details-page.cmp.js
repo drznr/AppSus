@@ -23,6 +23,9 @@ export default {
         <router-link :to="'compose/' + email.id" title="Reaply"> 
             <img src="imgs/icons/reply.png" class="email-details-reply-btn"/>
         </router-link>
+        <router-link :to="'/keeper/' + email.subject + '/' + email.body" title="Reaply"> 
+            <img src="imgs/icons/save.png" class="email-details-save-btn"/>
+        </router-link>
     </section>
     `,
     data(){

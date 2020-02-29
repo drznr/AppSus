@@ -26,6 +26,15 @@
     cursor: pointer;
     background-color: #F3F3F3;
 } 
+.email-details-save-btn{
+    width: 35px;
+    height: 35px;
+    bottom: -45px;
+    left: 78px;
+    position: absolute;
+    cursor: pointer;
+    background-color: #F3F3F3;
+}
 
 .email-details-body{
     white-space: pre-line;

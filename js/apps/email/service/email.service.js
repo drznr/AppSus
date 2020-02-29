@@ -14,13 +14,15 @@ export const emailService = {
 const EMAILS_KEY = 'emails';
 
 var emailsDB = [
-    {id: utilService.makeId(), from: 'Mamba', to: 'jhon@doe.com', subject: 'Wassap?',
+    {id: utilService.makeId(), from: 'Simba', to: 'jhon@doe.com', subject: 'Thanks Again!',
       body: utilService.makeLorem(30), isRead: true, isStared: true, sentAt : 1551133930594},
+    {id: utilService.makeId(), from: 'Mamba', to: 'jhon@doe.com', subject: 'Wassap?',
+      body: utilService.makeLorem(30), isRead: false, isStared: false, sentAt : 1551133930594},
     {id: utilService.makeId(), from: 'Puki', to: 'jhon@doe.com', subject: 'Chase bank', 
-      body: utilService.makeLorem(30), isRead: false, isStared: false, sentAt : 1551133930594},
-    {id: utilService.makeId(), from: 'Muki', to: 'jhon@doe.com', subject: 'About they thing?', 
-      body: utilService.makeLorem(30), isRead: false, isStared: false, sentAt : 1551133930594},
-    {id: utilService.makeId(), from: 'Shuki', to: 'jhon@doe.com', subject: 'Regarding the stuff?',
+      body: utilService.makeLorem(30), isRead: true, isStared: false, sentAt : 1551133930594},
+    {id: utilService.makeId(), from: 'Muki', to: 'jhon@doe.com', subject: 'About they thing', 
+      body: utilService.makeLorem(30), isRead: false, isStared: true, sentAt : 1551133930594},
+    {id: utilService.makeId(), from: 'Shuki', to: 'jhon@doe.com', subject: 'Regarding the stuff',
       body: utilService.makeLorem(30), isRead: false, isStared: false, sentAt : 1551133930594},
 ]
 
