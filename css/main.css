@@ -2,6 +2,7 @@
 @import './helpers.css';
 @import './reset.css';
 @import './base.css';
+@import './router-anim.css';
 @import './cmps/main-header.css';
 @import './cmps/user-msg.css';
 @import './cmps/long-txt.css';

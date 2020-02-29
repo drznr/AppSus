@@ -28,3 +28,6 @@ input {
 button:focus, input:focus {
     outline: none;
 }
+audio {
+    outline: none;
+}

@@ -10,7 +10,9 @@ new Vue({
             <user-msg></user-msg>
             <main-header></main-header>
             <main class="main-content">
+            <transition name="slide-fade" mode="out-in">
                 <router-view></router-view>
+            </transition>
             </main>
             <main-footer></main-footer>
         </section>
