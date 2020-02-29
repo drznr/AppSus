@@ -15,9 +15,9 @@ export default {
                 <p class="email-preaview-body">{{email.body}}</p>
                 </div>
             </router-link>   
-            <img src="../../../imgs/icons/trash.png" title="Delete Mail"
+            <img src="imgs/icons/trash.png" title="Delete Mail"
                 class="email-preview-controls-delete-icon" @click="deleteThis">
-            <img v-bind:src="'../../../imgs/icons/' + emailStatus + '.png'" title="Mark Unread/Read"
+            <img v-bind:src="'imgs/icons/' + emailStatus + '.png'" title="Mark Unread/Read"
                 class="email-preview-controls-status-icon" @click="toggleStatus">
         </div>
     </section>

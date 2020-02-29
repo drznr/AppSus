@@ -11,9 +11,9 @@ export default {
         <div class="email-details-controls-wrap">
             <span @click="toggleStared" v-bind:class="{starStatus: email.isStared}" 
                 class="email-deatails-star"  title="Mark/Unmark Favorate">★</span>
-            <img src="../../../imgs/icons/trash.png" title="Delete Mail"
+            <img src="imgs/icons/trash.png" title="Delete Mail"
                 class="email-details-controls-delete-icon" @click="deleteThis"/>
-            <img v-bind:src="'../../../imgs/icons/' + emailStatus + '.png'" title="Mark Unread/Read"
+            <img v-bind:src="'imgs/icons/' + emailStatus + '.png'" title="Mark Unread/Read"
                 class="email-details-controls-status-icon" @click="toggleStatus"/>
         </div>
         <p class="email-details-body">{{email.body}}
@@ -21,7 +21,7 @@ export default {
         </p>
             
         <router-link :to="'compose/' + email.id" title="Reaply"> 
-            <img src="../../../imgs/icons/reply.png" class="email-details-reply-btn"/>
+            <img src="imgs/icons/reply.png" class="email-details-reply-btn"/>
         </router-link>
     </section>
     `,

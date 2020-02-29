@@ -2,7 +2,7 @@ export default {
     template: `
     <section class="about-page">
         <div class="about-page-card">
-        <img src="../../imgs/daniel.jpg">
+        <img src="imgs/daniel.jpg">
         <span>
           <h3>Daniel Dresner</h3>
           <p>
@@ -15,7 +15,7 @@ export default {
           </span>
     </div>
     <div class="about-page-card">
-        <img src="../../imgs/nadav.jpg">
+        <img src="imgs/nadav.jpg">
         <span>
         <h3>Nadav Julius</h3>
         <p>
