@@ -16,7 +16,7 @@ var NoteText = {
             </label>
             </button>
             <button class="card-btn" @click="toggleEdit"><img src="../../../../imgs/icons/edit.png" title="Edit note"/></button>
-            <router-link class="card-btn" :to="'compose/' + note.info.title + '/' + note.info.txt"><img src="../../../../imgs/icons/send.png" title="Send note"/></router-link>
+            <router-link class="card-btn" :to="'emails/compose/' + note.info.title + '/' + note.info.txt"><img src="../../../../imgs/icons/send.png" title="Send note"/></router-link>
             <button class="card-btn" @click="$emit('removed', note.id)"><img src="../../../../imgs/icons/bin.png" title="Remove note" /></button>
         </div>
        </div>

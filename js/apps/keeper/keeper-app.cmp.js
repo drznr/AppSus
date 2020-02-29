@@ -46,6 +46,16 @@ export default {
             }
         }
     },
+    watch: {
+        '$route.params'() {
+            const noteData = {
+                noteType: 'NoteText',
+                txt: this.$route.params.txt,
+                noteTitle: this.$route.params.title
+            }
+            this.addNote(noteData);
+        }
+    },
     created() {
             keeperService.getNotes().then(notes=> {
                 this.notes = JSON.parse(JSON.stringify(notes));
