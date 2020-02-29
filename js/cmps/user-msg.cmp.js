@@ -15,12 +15,9 @@ export default {
     `,
     data() {
         return {
-            msg: {
-                type: 'success',
-                txt: 'note was added successfully...!'
-            },
+            msg: null,
             didFail: false,
-            isShown: true,
+            isShown: false,
             timeOut: null
         }
     },
