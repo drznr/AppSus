@@ -16,11 +16,11 @@ export default {
     computed: {
         txtToDisplay() {
             if (!this.toggleReadMore && !this.isLongTxt) {
-                return this.txt
+                return this.txt;
             } else if(!this.toggleReadMore && this.isLongTxt) {
                 return this.txt.substring(0, this.chars) + '...';
             } else {
-                return this.txt
+                return this.txt;
             }
         },
     }, 
@@ -32,13 +32,12 @@ export default {
     },
     mounted(){
         this.$watch('$route.params.id', () => {
-                this.toggleReadMore = false
-                this.isLongTxt = (this.txt.length > this.chars)  
-                console.log(this.txt);
+                this.toggleReadMore = false;
+                this.isLongTxt = (this.txt.length > this.chars);
             })
         },
         created() {
-            this.toggleReadMore = false
-            this.isLongTxt = (this.txt.length > this.chars)                
+            this.toggleReadMore = false;
+            this.isLongTxt = (this.txt.length > this.chars);          
     }
 };
