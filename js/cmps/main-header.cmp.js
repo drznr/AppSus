@@ -2,7 +2,7 @@ export default {
     template: `
         <header class="main-header">
         <router-link to="/">
-            <img src="../../imgs/logo-white.png" alt="logo"/>
+            <img src="/../../imgs/logo-white.png" alt="logo"/>
         </router-link>
             <input type="checkbox" id="mainBurger"/>
             <label for="mainBurger" class="main-hamburger">
