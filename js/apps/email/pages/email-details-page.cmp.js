@@ -23,7 +23,7 @@ export default {
         <router-link :to="'compose/' + email.id" title="Reaply"> 
             <img src="imgs/icons/reply.png" class="email-details-reply-btn"/>
         </router-link>
-        <router-link :to="'/keeper/' + email.subject + '/' + email.body" title="Reaply"> 
+        <router-link :to="'/keeper/' + eSubject + '/' + email.body" title="Reaply"> 
             <img src="imgs/icons/save.png" class="email-details-save-btn"/>
         </router-link>
     </section>
@@ -34,6 +34,9 @@ export default {
         }
     },
     computed:{
+        eSubject(){
+            return this.email.subject.replace('?', '❓')
+        },
         emailStatus(){
             return (this.email.isRead) ? 'open-mail' : 'mail'
         },

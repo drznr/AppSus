@@ -16,7 +16,7 @@ export default {
         </section>
     `,
     methods:{
-        emitInbox(){
+        emitInbox(){ 
             this.$emit('showInbox')
         },
         emitStared(){                   

@@ -6,6 +6,10 @@
     border-bottom: solid 0.1px white;
 }
 
+.email-preview-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
 .email-preview-star {
     font-size: 30px;
     text-align: center;
@@ -44,12 +48,14 @@
     width: 28px;
     height: 28px;
     cursor: pointer;
+    margin: auto;
 }
 
 .email-preview-controls-status-icon {
     width: 28px;
     height: 28px;
     cursor: pointer;
+    margin: auto;
 }
 
 .starStatus {

@@ -30,7 +30,7 @@
     width: 35px;
     height: 35px;
     bottom: 15px;
-    left: 298px;
+    margin-left: 50px;
     position: absolute;
     cursor: pointer;
     background-color: #F3F3F3;
@@ -69,7 +69,6 @@
     }
     .email-details-save-btn{
         bottom: -45px;
-        left: 78px;
     }
 }
 
@@ -94,7 +93,6 @@
     }
     .email-details-save-btn{
         bottom: -145px;
-        left: 60px;
     }
 }
 

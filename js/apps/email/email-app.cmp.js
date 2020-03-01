@@ -16,7 +16,7 @@ export default {
             </router-view>
         </section>
     `,
-    data(){
+    data(){ 
         return {
             emails: [],
             filterBy: null,
