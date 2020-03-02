@@ -26,7 +26,7 @@ export const dynamicNotes = {
         template: `
         <div>
             <input type="text" placeholder="Add to do" v-if="onEdit" v-model="newTodo" @keyup.enter="$emit('todo-added', {txt:newTodo, id:note.id});onEdit=false;newTodo=''" />
-            <h5>{{ note.info.title }}<span class="add-todo" @click="toggleEdit">&plus;</span></h5>
+            <h5>{{ note.info.title }}&nbsp;<span class="add-todo" @click="toggleEdit">&plus;</span></h5>
             <ul>
                 <li v-for="(todo, idx) in note.info.todos">
                 <label class="todo" :class="{done: todo.isDone}">
