@@ -12,7 +12,30 @@
     padding: 40px 10px 10px 10px;
     position: relative;
     font-size: 1.125rem;
-    transition: background-color .4s linear;
+    transition: background-color .4s linear, transform .4s linear;
+}
+.note-card.viewed {
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+}
+.cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s linear;
+}
+.cover.viewed {
+    opacity: 1;
+    visibility: visible;
 }
 .note-card img, .note-card iframe, .note-card audio {
     width: 100%;
