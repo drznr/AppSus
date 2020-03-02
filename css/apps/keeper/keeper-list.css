@@ -15,7 +15,7 @@
     transition: background-color .4s linear, transform .4s linear;
 }
 .note-card.viewed {
-    position: absolute;
+    position: fixed;
     z-index: 999;
     top: 50%;
     left: 50%;
