@@ -14,7 +14,6 @@ const routes = [
     {path: '/emails', component: emailAppCmp,
     children:[
         {path:'', component: emailListPage},
-        // {path:'compose/:id?', component: emailComposePage},
         {path:'compose/:id?/:title?/:txt?', component: emailComposePage},
         {path:':id', component: emailDetailsPage}
     ]},

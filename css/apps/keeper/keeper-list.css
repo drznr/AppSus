@@ -9,12 +9,42 @@
 }
 .note-card {
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .75);
-    padding: 40px 10px;
-    padding-bottom: 10px;
+    padding: 40px 10px 10px 10px;
     position: relative;
+    font-size: 1.125rem;
+    transition: background-color .4s linear, transform .4s linear;
 }
-.note-card>img, .note-card>iframe, .note-card>audio {
+.note-card.viewed {
+    position: fixed;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+}
+.cover {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s linear;
+}
+.cover.viewed {
+    opacity: 1;
+    visibility: visible;
+}
+.note-card img, .note-card iframe, .note-card audio {
+    width: 100%;
+}
+.note-card h5 {
+    margin: 10px 0;
+    font-size: 1.25em;
+    font-family: robotobold, monospace;
+    text-transform: capitalize;
 }
 .note-card .controls {
     display: flex;

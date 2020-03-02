@@ -30,11 +30,11 @@
     top: 107px;
     right: 0;
     background-color: #303841;
-    transform: scaleX(0);
+    transform: translateX(100%);
     transform-origin: right;
     opacity: 0;
     z-index: 9;
-    transition: top .3s linear, transform .8s linear, opacity .8s linear;
+    transition: top .3s linear, transform .6s linear, opacity .6s linear;
 }
 .main-header:hover .main-nav {
     top: 127px;
@@ -97,7 +97,7 @@
     transform: translateX(-10px) rotateZ(-315deg);
 }
 .main-header [type="checkbox"]:checked ~ .main-nav {
-    transform: scaleX(1);
+    transform: translateX(0);
     opacity: 1;
 }
  

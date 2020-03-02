@@ -6,7 +6,7 @@ import userMsgCmp from './cmps/user-msg.cmp.js';
 
 new Vue({
     template: `
-        <section>
+        <section class="app">
             <user-msg></user-msg>
             <main-header></main-header>
             <main class="main-content">

@@ -105,8 +105,10 @@ function addTodo(noteData) {
 function replaceTxt(noteData) {
     const idx = notesDB.findIndex(note => note.id === noteData.id);
     if (idx === -1) return Promise.reject();
+    
+    if (noteData.type === 'NoteText') notesDB[idx].info.txt = noteData.txt;
+    else notesDB[idx].info.url = noteData.txt;
 
-    notesDB[idx].info.txt = noteData.txt;
     storageService.store(NOTES_KEY, notesDB);
     return Promise.resolve(notesDB);
 }
