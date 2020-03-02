@@ -1,30 +1,22 @@
-import { dynamicNotes } from './dynamic-cmps.js';
+import notePreviewCmp from './note-preview.cmp.js';
 
 export default {
     template: `
         <section class="keeper-list">
             <div v-if="notes" v-for="note in notes">
-                <component 
-                :is="note.type" 
+                <note-preview 
                 :note="note"
-                :onEdit="onEdit"
                 @removed="passNoteId"
                 @colored="passColor"
                 @pinned="passIsPinned"
-                @todo-toggle="passTodos"
-                @editted="editText"
                 @txt-change="changeText"
+                @todo-toggle="passTodos"
                 @todo-added="passTodo"
-                @remove-todo="passTodoIdx"
-                ></component>
+                @todo-removed="passTodoIdx"
+                ></note-preview>
             </div>
         </section>
     `,
-    data() {
-        return {
-            onEdit: false
-        }
-    },
     props: ['notes'],
     methods: {
         passNoteId(id) {
@@ -39,9 +31,6 @@ export default {
         passTodos(todoData) {
             this.$emit('todo-toggle', todoData);
         },
-        editText() {
-            this.onEdit = !this.onEdit;
-        },
         changeText(noteData) {
             this.$emit('txt-change', {...noteData})
         },
@@ -52,5 +41,7 @@ export default {
             this.$emit('todo-removed', {...noteData})
         }
     },
-    components: dynamicNotes
+    components: {
+        'note-preview': notePreviewCmp
+    }
 }

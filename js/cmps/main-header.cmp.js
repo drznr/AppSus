@@ -4,7 +4,7 @@ export default {
         <router-link to="/">
             <img src="imgs/logo-white.png" alt="logo"/>
         </router-link>
-            <input type="checkbox" id="mainBurger"/>
+            <input type="checkbox" id="mainBurger" ref="navToggle" />
             <label for="mainBurger" class="main-hamburger">
             <span>|</span>
             </label>
@@ -15,5 +15,10 @@ export default {
                 <li><router-link to="/about">About</router-link></li>
             </ul>
         </header>
-    `
+    `,
+    watch: {
+        '$route.params'() {
+            if (this.$refs.navToggle.checked) this.$refs.navToggle.checked = false;
+        }
+    }
 }
