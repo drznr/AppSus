@@ -64,12 +64,17 @@ export const dynamicNotes = {
         template: `
         <div>
             <h5>{{ note.info.title }}</h5>
-            <audio controls>
+            <audio controls ref="player">
                 <source :src="note.info.url" type="audio/mp3">
                 Your browser does not support the audio element.
             </audio>
         </div>
         `,
-        props: ['note']
+        props: ['note'],
+        watch: {
+            'note.info.url'() {
+                this.$refs.player.load();
+            }
+        }
     }
 }
