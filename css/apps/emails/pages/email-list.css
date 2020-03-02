@@ -16,6 +16,12 @@
 
 @media only screen and (max-width: 900px) {
     .emails-list-container{
+        width: 93vw;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .emails-list-container{
         width: 91vw;
     }
 }
@@ -23,5 +29,6 @@
 @media only screen and (max-width: 525px){
     .emails-list-container{
         height: 76vh;
+        width: 93vw;
     }
 }

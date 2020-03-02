@@ -21,17 +21,13 @@
 .email-details-reply-btn{ 
     width: 40px;
     height: 40px;
-    bottom: 10px;
-    position: absolute;
     cursor: pointer;
     background-color: #F3F3F3;
 } 
 .email-details-save-btn{
     width: 35px;
     height: 35px;
-    bottom: 15px;
-    margin-left: 50px;
-    position: absolute;
+    bottom: 3px;
     cursor: pointer;
     background-color: #F3F3F3;
 }
@@ -64,12 +60,6 @@
     .email-details-body{
         width: 91vw;
     }
-    .email-details-reply-btn{
-        bottom: -47px;
-    }
-    .email-details-save-btn{
-        bottom: -45px;
-    }
 }
 
 @media only screen and (max-width: 400px) {
@@ -87,12 +77,6 @@
     }
     .email-details-body{
         height: 59vh;
-    }
-    .email-details-reply-btn{
-        bottom: -150px;
-    }
-    .email-details-save-btn{
-        bottom: -145px;
     }
 }
 

@@ -21,4 +21,19 @@
 	top:1px;
 }
 
-        
+.blue{
+	background-color: aquamarine;
+}        
+.pink{
+	background-color: lightpink;
+}        
+.green{
+	background-color: lightgreen;
+}        
+.purple{
+	background-color: rgb(202, 122, 202);
+}        
+
+.orange{
+	background-color: rgb(241, 200, 123);
+}

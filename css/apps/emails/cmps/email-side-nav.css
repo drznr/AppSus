@@ -20,7 +20,7 @@
 .email-main-nav>* {
     cursor: pointer;
     height: 20%;
-    align-items: center;
+    align-items: center; 
     display: flex;
     justify-content: center;
 }
@@ -81,14 +81,12 @@
         transition: top .3s linear, transform .8s linear, opacity .8s linear;
     }
     .side-nav-container [type="checkbox"]:checked+label>span::before {
-        transition: transform .2s linear;
-        transform: translateX(65px) translateY(-16px) rotateZ(-540deg);
-        content: '|';
+        transition: transform .3s linear;
+        transform: translateX(20px) translateY(10px) rotateZ(360deg);
     }
     .side-nav-container [type="checkbox"]:checked+label>span::after {
-        transition: transform .2s linear;
-        transform: translateX(-18px) rotateZ(-450deg);
-        content: 'Menu|';
+        transition: transform .3s linear;
+        transform: translateX(-20px) translateY(-10px) rotateZ(-720deg);
     }
     .side-nav-container [type="checkbox"]:checked~.email-main-nav {
         transform: scaleX(1);
@@ -121,13 +119,16 @@
         font-size: 2.5rem;
     }
     .side-nav-hamburger span::before {
-        content: '|';
+        transition: transform .3s linear;
+        content: '.';
         display: inline-block;
-        /* transition: transform .3s linear; */
+        transform: translateX(10px);
     }
     .side-nav-hamburger span::after{
-        content: '||';
+        transition: transform .3s linear;
+        content: '.';
         display: inline-block;
+        transform: translateX(-10px);
     }
 }
 

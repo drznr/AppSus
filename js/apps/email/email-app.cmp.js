@@ -9,8 +9,8 @@ export default {
         <section class="email-container">
             <compose-btn @composeMail="routeToCompose"></compose-btn>
             <email-filter :emails="emails" @filtered="setFilter"></email-filter>
-            <side-nav @showStared="showStarred" @showInbox="showingInbox"></side-nav>
-            <router-view :fillteredEmails="emailsForDispaly" class="email-router-view"
+            <side-nav @showStared="showStarred" @showInbox="showingInbox" @showSent="ShowingSent"></side-nav>
+            <router-view :fillteredEmails="emails" class="email-router-view"
                 @deleteItGp="deletingEmail" @toggleStarGp="staringEmail"
                 @toggleStatusGp="toggelingEmailStatus" @emailSent="updateList">
             </router-view>
@@ -19,32 +19,17 @@ export default {
     data(){ 
         return {
             emails: [],
-            filterBy: null,
-            showingStared: false,
+            filterBy: { byName: '', byStatus: 'all', },
+            papaFilter:{
+                showingStared: false,
+                showingSent: false,
+            },
+            sortBy: 'date'
         }
     },
     watch:{
         $route(){
             this.updateList()         
-        }
-    },
-    computed:{
-        emailsForDispaly(){
-            if(this.showingStared === true) return this.getStared()
-            if (!this.filterBy) return this.emails
-            var filterByName = JSON.parse(JSON.stringify(this.filterBy.byName)).toLowerCase()
-            var emails = JSON.parse(JSON.stringify(this.emails))
-            if (this.filterBy.byStatus !== 'all') {
-                var filterByStatus = this.filterBy.byStatus === 'read'
-                emails = emails.filter(email => email.isRead === filterByStatus)
-                
-            }
-            return emails.filter(email => {                
-                return email.from.toLowerCase().includes(filterByName) ||
-                    email.body.toLowerCase().includes(filterByName) ||
-                    email.subject.toLowerCase().includes(filterByName) || 
-                    email.to.toLowerCase().includes(filterByName)          
-            })
         }
     },
     methods:{
@@ -53,19 +38,29 @@ export default {
             
             this.$router.push('/emails/compose')  
         },
-        setFilter(filterBy){
-            this.filterBy = filterBy
+        setFilter(filterBy, sortBy){                  
+            var outgoingFilter = JSON.parse(JSON.stringify(this.papaFilter))            
+            if(filterBy) this.filterBy = filterBy
+            var copyFilterBy = JSON.parse(JSON.stringify(this.filterBy))
+            if (sortBy) this.sortBy = sortBy
+            var copySortBy = JSON.parse(JSON.stringify(this.sortBy))
+            outgoingFilter.filterBy = copyFilterBy            
+            outgoingFilter.sortBy = copySortBy            
+            emailService.getEmailsForDispaly(outgoingFilter)
+            .then(emails => this.emails = emails)
+        },
+        ShowingSent(){
+            this.papaFilter.showingSent = !this.papaFilter.showingSent
+            this.setFilter()
         },
         showStarred(){
-            this.showingStared = !this.showingStared
-            
+            this.papaFilter.showingStared = !this.papaFilter.showingStared
+            this.setFilter()
         },
         showingInbox(){
-            this.showingStared = false
-        },
-        getStared(){
-            var emails = JSON.parse(JSON.stringify(this.emails))
-            return emails.filter(email => email.isStared)
+            this.papaFilter.showingStared = false
+            this.papaFilter.showingSent = false
+            this.setFilter()
         },
         deletingEmail(emailId){
             emailService.deleteSelectedEmail(emailId)
@@ -82,6 +77,9 @@ export default {
         updateList(){
             emailService.query()
             .then(emails => this.emails = JSON.parse(JSON.stringify(emails)))
+        },
+        getEmails(){
+            return emailService.query()
         }
     },
     components:{

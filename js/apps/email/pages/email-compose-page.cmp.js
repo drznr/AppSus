@@ -14,7 +14,7 @@ export default {
                     <button class="my-btn" @click.prevent="sendEmail">Send</button>
                 </div>
             </form>
-        </section> 
+        </section>
     `,
     data(){
         return {
@@ -40,7 +40,7 @@ export default {
             this.newEmail.body = ''
         },
         init(){
-            this.newEmail = {
+            this.newEmail = { 
                 from: 'nadav',
                 to: '',
                 subject: '',
@@ -66,5 +66,10 @@ export default {
     },
     created(){
         this.init()    
+    },
+    destroyed(){
+        console.log('lala');
+        
     }
+
 }
