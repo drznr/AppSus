@@ -28,43 +28,43 @@ export default {
         </router-link>
     </section>
     `,
-    data(){
-        return{ 
+    data() {
+        return {
             email: null
         }
     },
-    computed:{
-        eSubject(){
+    computed: {
+        eSubject() {
             return this.email.subject.replace('?', '❓')
         },
-        emailStatus(){
+        emailStatus() {
             return (this.email.isRead) ? 'open-mail' : 'mail'
         },
     },
     methods: {
-        getEmail(){
+        getEmail() {
             const emailId = this.$route.params.id
             emailService.getEmailById(emailId)
-            .then(email => {
-                this.email = email
-            }) 
+                .then(email => {
+                    this.email = email
+                })
         },
-        toggleStared(){
+        toggleStared() {
             emailService.toggleStarred(this.copyEmailId())
         },
-        toggleStatus(){
+        toggleStatus() {
             emailService.updateEmailStatus(this.copyEmailId())
             this.$router.push('/emails')
         },
-        deleteThis(){
-            emailService.deleteSelectedEmail(this.copyEmailId())   
-            this.$router.push('/emails')   
+        deleteThis() {
+            emailService.deleteSelectedEmail(this.copyEmailId())
+            this.$router.push('/emails')
         },
-        copyEmailId(){
+        copyEmailId() {
             return this.email.id.slice(0, this.email.id.length)
         }
     },
-    created(){
+    created() {
         this.getEmail()
     }
 }

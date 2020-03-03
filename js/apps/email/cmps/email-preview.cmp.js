@@ -27,35 +27,35 @@ export default {
             </section>
         </div>
     </section>
-    `, 
+    `,
     props: ['email'],
-    data(){
+    data() {
         return {
             currEmail: null,
             firstLetter: null
         }
     },
-    watch:{
-        eamil(){
+    watch: {
+        eamil() {
             this.currEmail = JSON.parse(JSON.stringify(this.eamil))
             this.emailStatus()
         }
     },
-    computed:{
-        setDate(){
+    computed: {
+        setDate() {
             // debugger
-            if(this.email.sentAt > (Date.now() - 1000000)) return 'Recent'
+            if (this.email.sentAt > (Date.now() - 1000000)) return 'Recent'
 
             const milliseconds = JSON.parse(JSON.stringify(this.email.sentAt)) * 1000 // 1575909015000
             const dateObject = new Date(milliseconds)
-            
-            var day = dateObject.toLocaleString("en-US", {day: "numeric"})
-            var month = dateObject.toLocaleString("en-US", {month: "numeric"})
-            var year = dateObject.toLocaleString("en-US", {year: "numeric"})
+
+            var day = dateObject.toLocaleString("en-US", { day: "numeric" })
+            var month = dateObject.toLocaleString("en-US", { month: "numeric" })
+            var year = dateObject.toLocaleString("en-US", { year: "numeric" })
 
             return `sent: ${day} / ${month}`
         },
-        setFirstLetterClass(){
+        setFirstLetterClass() {
             var letter = this.firstLetter.toLowerCase().charCodeAt(0)
             return {
                 blue: letter < 102,
@@ -65,32 +65,32 @@ export default {
                 purple: letter < 122 && letter > 118,
             }
         },
-        senderFirstLetter(){
+        senderFirstLetter() {
             return currEmail.from.slice
         },
-        emailStatus(){
+        emailStatus() {
             return (this.email.isRead) ? 'open-mail' : 'mail'
         },
-        openedStatus(){
-            return {mailOpened: this.email.isRead, mailClosed: !this.email.isRead}
+        openedStatus() {
+            return { mailOpened: this.email.isRead, mailClosed: !this.email.isRead }
         }
     },
-    methods:{
-        deleteThis(){
+    methods: {
+        deleteThis() {
             this.$emit('deleteEmail', this.copyEmailId())
         },
-        toggleStared(){
+        toggleStared() {
             this.$emit('starEmail', this.copyEmailId())
         },
-        toggleStatus(){
+        toggleStatus() {
             this.$emit('toggleEmailStatus', this.copyEmailId())
             this.currEmail = JSON.parse(JSON.stringify(this.email))
         },
-        copyEmailId(){
-           return this.currEmail.id.slice(0, this.currEmail.id.length)
+        copyEmailId() {
+            return this.currEmail.id.slice(0, this.currEmail.id.length)
         }
     },
-    created(){
+    created() {
         this.currEmail = JSON.parse(JSON.stringify(this.email))
         this.firstLetter = this.currEmail.from.slice(0, 1).toUpperCase()
     }

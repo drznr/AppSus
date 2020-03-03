@@ -7,10 +7,10 @@ export default {
             <button @click.prevent="emitCompose">+Compose</button>
         </section>
     `,
-    methods:{
-        emitCompose(){                   
-                this.$emit('composeMail')
+    methods: {
+        emitCompose() {
+            this.$emit('composeMail')
         }
     }
-    
+
 }  

@@ -1,7 +1,7 @@
 import emailStatus from './email-status.cmp.js'
 
 export default {
-    template:`
+    template: `
     <section class="email-filter-container">
         <section class="email-filter-search-sort-wrap">
             <input type="text" class="email-search-input" v-model="filterBy.byName"
@@ -26,9 +26,9 @@ export default {
             <email-status v-if="passingEmails" :emails="passingEmails" class="email-filter-bystatus-results"></email-status>
         </section>
     </section>
-    `, 
+    `,
     props: ['emails'],
-    data(){ 
+    data() {
         return {
             filterBy: { byName: '', byStatus: 'all', },
             sortBy: 'date',
@@ -36,16 +36,16 @@ export default {
         }
     },
     methods: {
-        emitFilter() {                        
+        emitFilter() {
             var sort = this.sortBy.slice(0)
-            this.$emit('filtered', {...this.filterBy}, sort)
+            this.$emit('filtered', { ...this.filterBy }, sort)
         }
     },
-    components:{
+    components: {
         'email-status': emailStatus
     },
-    watch:{
-        emails(){
+    watch: {
+        emails() {
             this.passingEmails = JSON.parse(JSON.stringify(this.emails))
         }
     }

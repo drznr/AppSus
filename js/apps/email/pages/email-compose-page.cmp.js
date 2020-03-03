@@ -16,35 +16,35 @@ export default {
             </form>
         </section>
     `,
-    data(){
+    data() {
         return {
             newEmail: null
         }
     },
-    watch:{
-        $route(){
+    watch: {
+        $route() {
             this.init()
         }
     },
     methods: {
-        sendEmail(){
-            emailService.sendEmail({...this.newEmail})
+        sendEmail() {
+            emailService.sendEmail({ ...this.newEmail })
             this.cleanForm()
             this.$router.push('/emails')
             this.$emit('emailSent')
         },
-        cleanForm(){
+        cleanForm() {
             this.newEmail.from = 'nadav'
             this.newEmail.to = ''
             this.newEmail.subject = ''
             this.newEmail.body = ''
         },
-        init(){
-            this.newEmail = { 
+        init() {
+            this.newEmail = {
                 from: 'nadav',
                 to: '',
                 subject: '',
-                body:''
+                body: ''
             }
             const emailId = this.$route.params.id
             const keeperTitle = this.$route.params.title
@@ -54,22 +54,22 @@ export default {
                     .then(email => {
                         const copyEmail = JSON.parse(JSON.stringify(email))
                         copyEmail.subject = 'Re: ' + copyEmail.subject
-                        copyEmail.body =  '\n'.repeat(12) + '_ '.repeat(30) + '\n \n' + 'From:' 
+                        copyEmail.body = '\n'.repeat(12) + '_ '.repeat(30) + '\n \n' + 'From:'
                             + copyEmail.from + '\n' + copyEmail.body
                         this.newEmail = copyEmail
-                    })    
-            } else if (keeperTitle){
+                    })
+            } else if (keeperTitle) {
                 this.newEmail.subject = keeperTitle
-                this.newEmail.body = keeperBody   
-            }        
+                this.newEmail.body = keeperBody
+            }
         }
     },
-    created(){
-        this.init()    
+    created() {
+        this.init()
     },
-    destroyed(){
+    destroyed() {
         console.log('lala');
-        
+
     }
 
 }

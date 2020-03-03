@@ -15,16 +15,16 @@ export default {
             </ul>
         </section>
     `,
-    methods:{
-        emitInbox(){ 
+    methods: {
+        emitInbox() {
             this.$emit('showInbox')
-        }, 
-        emitStared(){                   
+        },
+        emitStared() {
             this.$emit('showStared')
         },
-        emitSent(){
+        emitSent() {
             this.$emit('showSent')
         }
     }
-     
+
 } 

@@ -1,7 +1,7 @@
 
 
 export default {
-    template:`
+    template: `
     <section class="email-status-container">
         <p v-if="myEmails">{{allEmails}}</p>
         <p v-if="myEmails">{{readEmails}}</p>
@@ -9,37 +9,37 @@ export default {
     </section>
     `,
     props: ['emails'],
-    data(){ 
+    data() {
         return {
             myEmails: null
         }
     },
     computed: {
-        allEmails(){
+        allEmails() {
             return this.myEmails.length
         },
-        readEmails(){
-            var counter = 0 
-           var readEmails = JSON.parse(JSON.stringify(this.myEmails))
-           readEmails.forEach(email => {
-               if(email.isRead) counter++
+        readEmails() {
+            var counter = 0
+            var readEmails = JSON.parse(JSON.stringify(this.myEmails))
+            readEmails.forEach(email => {
+                if (email.isRead) counter++
             })
             return counter
         },
-        unreadEmails(){
-            var counter = 0 
+        unreadEmails() {
+            var counter = 0
             var unreadEmails = JSON.parse(JSON.stringify(this.myEmails))
             unreadEmails.forEach(email => {
-                if(!email.isRead) counter++
-                
+                if (!email.isRead) counter++
+
             })
             return counter
         },
     },
-    watch:{
-        emails(){
+    watch: {
+        emails() {
             this.myEmails = JSON.parse(JSON.stringify(this.emails))
         }
-        
+
     }
 }
